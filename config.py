@@ -1,0 +1,3 @@
+CLIENT_ID ="7adfd4d683d3a3abab890a9602967d3a"
+CLIENT_SECRET="pA0PS6Ch3OLcT25PfBokwjFl2htojtPb"
+REDIRECT_URI ="http://localhost:5000/oauth"
