@@ -12,6 +12,11 @@ from flask_jwt_extended import (
 from config import CLIENT_ID, REDIRECT_URI
 from controller import Oauth
 from model import UserModel, UserData
+from flask import Flask
+from flask import Flask
+from routes.index import index_bp
+
+
 
 
 app = Flask(__name__)
@@ -23,10 +28,12 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 30
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 100
 jwt = JWTManager(app)
 
+app.register_blueprint(index_bp)
 
-@app.route("/")
-def index():
-    return render_template('index.html')
+
+@app.route("/login")
+def login():
+    return render_template('login.html')
 
 
 @app.route("/oauth")
@@ -51,7 +58,7 @@ def oauth_api():
     user = UserData(user)
     UserModel().upsert_user(user)
 
-    resp = make_response(render_template('index.html'))
+    resp = make_response(render_template('login.html'))
     access_token = create_access_token(identity=user.id)
     refresh_token = create_refresh_token(identity=user.id)
     resp.set_cookie("logined", "true")
@@ -135,3 +142,8 @@ def oauth_userinfo_api():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
