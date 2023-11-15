@@ -153,4 +153,7 @@ const getCookie = (cookieName) => {
 	return cookieValue;
 }
 
+function goToIndex() {
+	window.location.href = "/"; // index.html로 이동
+  }
 init();

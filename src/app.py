@@ -1,7 +1,7 @@
 """
 Flask Kakao OAuth Application Sample
 """
-from flask import Flask, render_template, request, jsonify, make_response
+from flask import Flask, render_template, request, jsonify, make_response, session, redirect, url_for
 from flask_jwt_extended import (
     JWTManager, create_access_token, 
     get_jwt_identity, jwt_required,
@@ -20,6 +20,7 @@ from routes.index import index_bp
 
 
 app = Flask(__name__)
+app.secret_key = 'qhrwl12345'
 app.config['JWT_SECRET_KEY'] = "I'M IML."
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_COOKIE_SECURE'] = False
@@ -31,8 +32,8 @@ jwt = JWTManager(app)
 app.register_blueprint(index_bp)
 
 
-@app.route("/login")
-def login():
+@app.route("/")
+def index():
     return render_template('login.html')
 
 
@@ -61,6 +62,7 @@ def oauth_api():
     resp = make_response(render_template('login.html'))
     access_token = create_access_token(identity=user.id)
     refresh_token = create_refresh_token(identity=user.id)
+    session['access_token'] = access_token
     resp.set_cookie("logined", "true")
     set_access_cookies(resp, access_token)
     set_refresh_cookies(resp, refresh_token)
@@ -139,7 +141,18 @@ def oauth_userinfo_api():
     result = Oauth().userinfo("Bearer " + access_token)
     return jsonify(result)
 
+# @app.route("/login")
+# def index():
+#     # 세션에서 Access Token 가져오기
+#     access_token = session.get('access_token')
 
+#     # Access Token으로 유저 정보 가져오기
+#     if access_token:
+#         user_info = Oauth().userinfo("Bearer " + access_token)
+#         return render_template('index.html', user_info=user_info) #수정하고 싶은 페이지로 
+
+#     # 가져온 유저 정보를 이용하여 홈페이지를 렌더링합니다.
+#     return render_template('login.html')
 if __name__ == '__main__':
     app.run(debug=True)
 

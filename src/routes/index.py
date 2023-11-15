@@ -22,7 +22,7 @@ def wbs():
     return render_template('wbs.html', data=data_dict)
 
 
-api.add_resource(Index, '/')
+api.add_resource(Index, '/home')
 
 
 # api.add_resource(WBS, '/wbs')
