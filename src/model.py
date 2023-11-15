@@ -1,14 +1,13 @@
-from tinydb import TinyDB, Query
 import pymysql
 
 
-import json
+
 
 
 
 class UserModel:
     def __init__(self):
-        self.db = pymysql.connect(host='127.0.0.1', user='root', password='qhrwl123', db='test', charset='utf8')
+        self.db = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='test', charset='utf8')
 
     def upsert_user(self, user):
         with self.db.cursor() as cursor:
@@ -29,38 +28,8 @@ class UserModel:
             cursor.execute(sql, (user_id,))
         self.db.commit()
 
-# class UserModel:
-
-#     def __init__(self, path='db.json'):
-#         self.db = TinyDB(path)
-        
-
-#     def upsert_user(self, user):
-#         if not self.db.search(Query().id == user.id):
-#             self.db.insert(user.serialize())
-
-#     def get_user(self, user_id):
-#         user = self.db.search(Query().id == user_id)
-#         return UserData.deserialize(user[0])
-
-#     def remove_user(self, user_id):
-#         self.db.remove(Query().id == user_id)
-
-
 class UserData:
-    # def __init__(self, user=None):
-    #    if user and 'kakao_account' in user and 'profile' in user['kakao_account']:
-    #        user_info = user['kakao_account']['profile']
-    #        self.id = user['id']
-    #        self.nickname = user_info['nickname']
-    #        self.profile = user_info['profile_image_url']
-    #        self.thumbnail = user_info['thumbnail_image_url']
-    #    else:
-    #        self.id = None
-    #        self.nickname = None
-    #        self.profile = None
-    #        self.thumbnail = None
-    
+
     def __init__(self, user=None):
         if user:
             user_info = user['kakao_account']['profile']
