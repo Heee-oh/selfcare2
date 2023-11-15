@@ -4,7 +4,7 @@ const init = () => {
 	// 버튼 이벤트 등록
 	document.querySelector("#kakao").addEventListener('click', onKakao);
 	document.querySelector("#logout").addEventListener('click', onLogout);
-	
+
 	// 자동 로그인 실행
 	autoLogin();
 
@@ -36,7 +36,8 @@ const onKakao = async () => {
 		clearInterval(checkConnect);
 		
 		if(getCookie('logined') === 'true') {
-			window.location.reload();
+			// window.location.reload();
+			window.location.href='/home';
 		} else {
 			document.querySelector("#loading").classList.add('display_none');
 		}
@@ -153,7 +154,4 @@ const getCookie = (cookieName) => {
 	return cookieValue;
 }
 
-function goToIndex() {
-	window.location.href = "/"; // index.html로 이동
-  }
 init();

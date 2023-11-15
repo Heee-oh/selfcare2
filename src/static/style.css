@@ -170,3 +170,21 @@ body {
   color: #000000;
   cursor: pointer;
 }
+
+#home_button button {
+  display: inline-block;
+  background-color: #739fe5; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition-duration: 0.4s; /* Transition effect */
+  cursor: pointer;
+  padding: 10px 24px;
+}
+
+#home_button button:hover {
+  background-color: #0a5de1; /* Darker green */
+  color: white;
+}
