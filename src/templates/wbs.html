@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        
+        table td {
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+
+        #header {
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+
+        .highlight {
+            background-color: rgb(159, 199, 227);
+        }
+        
+        button {
+            background-color: white; /* White */
+            border: 2px solid rgb(159, 199, 227); /* LightPink */
+            color: rgb(159, 199, 227); /* LightPink */
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        </style>
+</head>
+<body>
+    <!-- url_for('index.home') index라는 블루프린트 이름과 home이라는 함수 이름 호출 -->
+    <a type="button" href="{{ url_for('index.index') }}" style="text-decoration: none;">
+        <button>Home</button>
+    </a>
+    <table>
+        <thead>
+            <tr>
+                {% for row in data %}
+                    {% if loop.first %}
+                        {% for header in row.keys() %}
+                            <th id="header">{{ header }}</th>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr class="{% if 19 in row.values() %}highlight{% endif %}">
+                    {% for value in row.values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
