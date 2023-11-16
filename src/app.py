@@ -142,18 +142,24 @@ def oauth_userinfo_api():
     result = Oauth().userinfo("Bearer " + access_token)
     return jsonify(result)
 
-@app.route("/login")
-def homeindex():
-    # 세션에서 Access Token 가져오기
-    access_token = session.get('access_token')
 
-    # Access Token으로 유저 정보 가져오기
-    if access_token:
-        user_info = Oauth().userinfo("Bearer " + access_token)
-        return render_template('index.html', user_info=user_info) #수정하고 싶은 페이지로 
+@app.route("/logout")
+def logout():
+    return render_template('logout.html')
+
+# @app.route("/login")
+# def homeindex():
+#     # 세션에서 Access Token 가져오기
+#     access_token = session.get('access_token')
+
+#     # Access Token으로 유저 정보 가져오기
+#     if access_token:
+#         user_info = Oauth().userinfo("Bearer " + access_token)
+#         return render_template('index.html', user_info=user_info) #수정하고 싶은 페이지로 
     
-    # 가져온 유저 정보를 이용하여 홈페이지를 렌더링합니다.
-    return redirect('/')
+#     # 가져온 유저 정보를 이용하여 홈페이지를 렌더링합니다.
+#     return redirect('/')
+    
 if __name__ == '__main__':
     app.run(debug=True)
 
