@@ -37,7 +37,7 @@ const onKakao = async () => {
 		
 		if(getCookie('logined') === 'true') {
 			// window.location.reload();
-			window.location.href='/home';
+			window.location.href='/demo';
 		} else {
 			document.querySelector("#loading").classList.add('display_none');
 		}

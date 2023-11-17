@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Example</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* 추가한 커스텀 스타일 */
+    .bg-gray {
+      background-color: #f0f0f0;
+    }
+    .white-bg {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    .arrow-down {
+      text-align: center;
+      font-size: 30px;
+    }
+    .arrow-down::before {
+      content: '\25BC'; /* Unicode for the down arrow */
+    }
+    .image-box {
+      width: 100px; /* Adjust the size as needed */
+      height: 100px; /* Adjust the size as needed */
+      background-color: #cccccc; /* Set the color to gray */
+      border: 1px solid #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto; /* Center the box horizontally */
+    }
+    .bottom-content {
+      /* 아래에 있는 긍정, 보통, 부정 테이블 및 키워드 그리드의 스타일 */
+      /* ... (이전 코드와 동일) ... */
+    }
+    .emotion-text {
+      text-align: center;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin: 5px;
+      display: inline-block;
+    }
+    .emotion-text.clicked {
+      background-color: #cccccc; /* 클릭시 색 변경 */
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <nav class="navbar navbar-light bg-gray">
+    <div class="container-fluid">
+      <a class="navbar-brand mb-0 h1" href="/test1">&lt; 뒤로</a>
+      <a class="navbar-brand mb-0 h1" href="#">다음 &gt;</a>
+    </div>
+  </nav>
+
+  <!-- 흰색 배경과 텍스트 -->
+  <div class="p-3 mb-2 bg-dark-subtle text-emphasis-dark">
+    <div class="container white-bg">
+      <p class="text-center">
+        OO이가 오늘 그런 감정을 느꼈구나...
+        더 자세히 이야기 해 줄 수 있어?
+      </p>
+    </div>
+  </div>
+
+  <div class="arrow-down">
+  </div>
+
+  <!-- 이미지 네모박스 -->
+  <div class="container-fluid image-box">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <!-- 이미지 또는 텍스트 -->
+        캐릭터
+      </div>
+    </div>
+  </div>
+
+  <!-- 간단한 메모 입력 -->
+  <div class="container-fluid emotion-name fixed-middle text-right">
+    <div class="row">
+      <div class="col-sm-12">
+        <input type="text" class="form-control" placeholder="간단한 메모를 남겨보세요">
+      </div>
+    </div>
+  </div>
+
+  <!-- 하단 내용 -->
+  <div class="container bottom-content text-center">
+    <!-- 감정 텍스트들을 클릭 가능하도록 수정 -->
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
