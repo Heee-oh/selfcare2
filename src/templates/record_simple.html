@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid Example</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     /* 추가한 커스텀 스타일 */
     .bg-gray {
@@ -53,7 +54,7 @@
   <nav class="navbar navbar-light bg-gray">
     <div class="container-fluid">
       <a class="navbar-brand mb-0 h1" href="/test1">&lt; 뒤로</a>
-      <a class="navbar-brand mb-0 h1" href="#">다음 &gt;</a>
+      <a class="navbar-brand mb-0 h1" id="record">다음 &gt;</a>
     </div>
   </nav>
 
@@ -84,7 +85,7 @@
   <div class="container-fluid emotion-name fixed-middle text-right">
     <div class="row">
       <div class="col-sm-12">
-        <input type="text" class="form-control" placeholder="간단한 메모를 남겨보세요">
+        <input type="text" class="form-control" id="contentA" placeholder="간단한 메모를 남겨보세요">
       </div>
     </div>
   </div>
@@ -97,5 +98,7 @@
   <!-- Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="/static/record_simple.js"></script>
 </body>
 </html>
