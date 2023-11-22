@@ -41,7 +41,8 @@
     .emotion-text.clicked {
       background-color: #cccccc; /* 클릭시 색 변경 */
     }
-  </style>
+
+  
   </style>
 </head>
 <body>
@@ -49,7 +50,7 @@
   <nav class="navbar navbar-light bg-gray">
     <div class="container-fluid">
       <a class="navbar-brand mb-0 h1" href="/test">&lt; 뒤로</a>
-      <a class="navbar-brand mb-0 h1" href="/test2">다음 &gt;</a>
+      <a class="navbar-brand mb-0 h1" type="button" onclick="goToNextPage()" >다음 &gt;</a>
     </div>
   </nav>
 
@@ -66,12 +67,14 @@
   <!-- 이미지 네모박스 -->
   <div class="container-fluid image-box">
     <div class="row">
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-12 text-center" id="selectedKeywords">
         <!-- 이미지 또는 텍스트 -->
         이미지 또는 텍스트
       </div>
     </div>
   </div>
+
+
   <div class="container-fluid emotion-name">
     <div class="row">
       <div class="col-sm-12">
@@ -84,35 +87,35 @@
     <!-- 감정 텍스트들을 클릭 가능하도록 수정 -->
     <div class="row">
       <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
+        <div class="emotion-text" onclick="markClicked(this)">기쁨</div>
       </div>
       <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
+        <div class="emotion-text" onclick="markClicked(this)">즐거움</div>
       </div>
       <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
-      </div>
-      <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
-      </div>
-      <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
+        <div class="emotion-text" onclick="markClicked(this)">행복함</div>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
+        <div class="emotion-text" onclick="markClicked(this)">슬픔</div>
       </div>
       <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
+        <div class="emotion-text" onclick="markClicked(this)">한가로움</div>
       </div>
       <div class="col-sm-4">
-        <div class="emotion-text" onclick="markClicked(this)">키워드</div>
+        <div class="emotion-text" onclick="markClicked(this)">피곤함</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="emotion-text" onclick="markClicked(this)">화남</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="emotion-text" onclick="markClicked(this)">나른함</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="emotion-text" onclick="markClicked(this)">짜증남</div>
       </div>
     </div>
   </div>
@@ -120,5 +123,6 @@
   <!-- Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/static/keyword_record.js"></script>
 </body>
 </html>
