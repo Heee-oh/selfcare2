@@ -1,7 +1,8 @@
 from functools import wraps
 from flask import Blueprint, jsonify, redirect, render_template, make_response, Flask, session, request
 import pandas as pd
-from .model_index import RecordModel
+import pymysql
+from .model_index import RecordModel,RecordData
 from flask_jwt_extended import jwt_required, get_jwt_identity, jwt_refresh_token_required
 
 
@@ -65,8 +66,34 @@ def save_data():
 
     return jsonify({'message': 'Data saved successfully'}), 200
 
+# @index_bp.route('/community')
+# def community():
+#     db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+    
+#     with db.cursor() as cursor:
+#         sql = "SELECT * FROM mind_recordv_1"
+#         cursor.execute(sql)
+#         records = cursor.fetchall()
+
+#     record_objects = [RecordData(record).serialize() for record in records]
+#     return jsonify(record_objects)
 
 
+@index_bp.route('/community')
+def community():
+    page = request.args.get('page', 1, type=int)
+    per_page = 100
+    offset = (page - 1) * per_page
+
+    db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+    
+    with db.cursor() as cursor:
+        sql = "SELECT * FROM mind_record LIMIT %s OFFSET %s"
+        cursor.execute(sql, (per_page, offset))
+        records = cursor.fetchall()
+
+    record_objects = [RecordData(record).serialize() for record in records]
+    return jsonify(record_objects)
 
 # @app.route("/login")
 # def homeindex():
