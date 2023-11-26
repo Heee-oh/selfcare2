@@ -32,40 +32,6 @@ def wbs():
     data_dict = data.to_dict('records')
     return render_template('wbs.html', data=data_dict)
 
-@index_bp.route('/test')
-@jwt_required
-def test():
-    return render_template('home.html')
-
-@index_bp.route('/test1')
-@jwt_required
-def test1():
-    return render_template('keyword_record.html')
-
-@index_bp.route('/test2')
-@jwt_required
-def test2():
-    return render_template('record_simple.html')
-
-
-@index_bp.route('/save_data', methods=['POST'])
-@jwt_required           # jwt 토큰 확인 (id확인용으로 필수)
-def save_data():
-    data = request.get_json()
-
-    user_id = get_jwt_identity() #사용자 고유 id 
-
-    print(data['keywords'])  # keywords 값 출력
-    
-    content = data['content']
-    
-    keywords = data['keywords']
-
-    record_model = RecordModel()
-    record_model.insert_record(user_id, content, keywords)
-
-    return jsonify({'message': 'Data saved successfully'}), 200
-
 # @index_bp.route('/community')
 # def community():
 #     db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
@@ -79,21 +45,6 @@ def save_data():
 #     return jsonify(record_objects)
 
 
-@index_bp.route('/community')
-def community():
-    page = request.args.get('page', 1, type=int)
-    per_page = 100
-    offset = (page - 1) * per_page
-
-    db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
-    
-    with db.cursor() as cursor:
-        sql = "SELECT * FROM mind_record LIMIT %s OFFSET %s"
-        cursor.execute(sql, (per_page, offset))
-        records = cursor.fetchall()
-
-    record_objects = [RecordData(record).serialize() for record in records]
-    return jsonify(record_objects)
 
 # @app.route("/login")
 # def homeindex():

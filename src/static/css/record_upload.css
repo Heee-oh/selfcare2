@@ -1,0 +1,158 @@
+.top {
+    position: relative;
+    height: 50px; 
+    border-bottom: 1px solid #000; 
+  }
+  .top a {
+    text-align: center;
+  }
+    .bg-gray {
+      background-color: #f0f0f0;
+    }
+    
+    .white-bg {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    /* 
+    .image-box {
+      width: 100px; 
+      height: 100px; 
+      background-color: #cccccc; 
+      border: 1px solid #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto; 
+    } */
+
+    .bottom-content {
+
+    }
+    .emotion-text {
+      text-align: center;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin: 5px;
+      display: inline-block;
+    }
+    .emotion-text.clicked {
+      background-color: #cccccc; /* 클릭시 색 변경 */
+    }
+
+    .custom-div {
+    height: 250px; /* Adjust as needed */
+  
+    }
+
+    .circle {         /*기록 보기 아이콘으로 대체될 예정 */
+  width: 50px;
+  height: 50px;
+  background-color: #c2acac;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(12% - 25px); /* Adjust as needed */
+  left: 10%;
+  transform: translateX(-50%);
+}
+
+.question{
+    position: relative;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    
+    left: 15%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    width: 220px;
+  }
+
+  .question2 {
+    position: relative;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+
+    left: 15%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    width: 220px;
+  }
+
+
+  .question3 {
+    position: absolute;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    top: calc(50% - 50px); /* Adjust as needed */
+    left: 15%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    width: 220px;
+  }
+
+  .question4 {
+    position: absolute;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    top: calc(70% - 50px); /* Adjust as needed */
+    left: 15%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    width: 220px;
+  }
+  
+
+  .question::before { /*말풍선 삼각형*/
+    content: "";
+    position: absolute;
+    left: -17px; 
+    top: 50%;
+    transform: translateY(-70%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-right: 20px solid #f0f0f0;
+  }
+
+  .question2::before { /*말풍선 삼각형*/
+    content: "";
+    position: absolute;
+    left: -17px; 
+    top: 50%;
+    transform: translateY(-70%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-right: 20px solid #f0f0f0;
+  }
+
+  .myanswer::after { /*말풍선 삼각형*/
+    content: "";
+    position: absolute;
+    right: -20px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left: 20px solid #f0f0f0; 
+  }
+  .inputchat {
+  position: fixed;
+  left: 15px;
+  bottom: 90px; /* Adjust this value based on the height of your navbar */
+  width: 92%; /* Ensure the input chat spans the full width */
+  
+  }
+  .bottom {
+  height: 80px; 
+  border-top: 1px solid #000; 
+}

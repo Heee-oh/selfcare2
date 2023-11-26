@@ -2,6 +2,17 @@
 var urlParams = new URLSearchParams(window.location.search);
 var keywords = decodeURIComponent(urlParams.get('keywords')).split(',');
 
+
+window.onload = function() {
+  const myanswer = document.querySelector('.myanswer p');
+  const keywordsave = JSON.parse(localStorage.getItem('situation'));
+  if (keywordsave) {
+    myanswer.textContent = keywordsave.join(', ');
+  }
+};
+
+
+
 function getCookie(name) {
   var cookieArr = document.cookie.split(";");
 

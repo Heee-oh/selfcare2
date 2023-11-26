@@ -15,6 +15,8 @@ from model import UserModel, UserData
 from flask import Flask
 from flask import Flask
 from routes.index import index_bp
+from routes.record import record
+
 
 
 
@@ -30,7 +32,7 @@ app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 3600 * 24
 jwt = JWTManager(app)
 
 app.register_blueprint(index_bp)
-
+app.register_blueprint(record)
 
 @app.route("/")
 def index():

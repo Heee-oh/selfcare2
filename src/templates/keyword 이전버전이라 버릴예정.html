@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>March</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      .navbar {
+    height: 60px; /* Adjust this value as needed */
+      }
+
+    .circle {         /*기록 보기 아이콘으로 대체될 예정 */
+    width: 50px;
+    height: 50px;
+    background-color: #c2acac;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(13% - 25px); /* Adjust as needed */
+    right: -1%;
+    transform: translateX(-50%);
+    }
+    .select {
+      position: absolute;
+      top: calc(45% - 25px); /* Adjust as needed */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+   .nav-underline .nav-link.active {   /*언더바 색상 */
+    border-bottom-color: #c2acac; 
+   }
+   .nav-link { /*평상시 색깔*/
+    color: #cb5e8b; 
+    }
+
+
+    .nav-link:hover {  /*언더바 마우스반응색*/
+    color: #553670; /* Adjust as needed */
+    }
+    
+    .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 2px;
+    background-color: transparent;
+    border: 1px solid #7777c1; /* Adjust as needed */
+    border-radius: 50px; /* Adjust as needed */
+    font-size: 0.875em;
+    color: #495057;
+    }
+    .tag:hover {
+    background-color: #7777c1; /* Adjust as needed */
+    }
+
+    
+    </style>
+</head>
+<body>
+  <nav class="navbar fixed-top bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand mb-0 h1" href="/test">&lt; 뒤로</a>
+      <a class="navbar-brand mb-0 h1" type="button" onclick="goToNextPage()" >다음 &gt;</a>
+    </div>
+  </nav>
+
+  <nav class="container-fluid select ">
+    <div class="nav nav-underline nav-justified" id="nav-tab" role="tablist"> <!-- nav-underline 말그대로 언더바이고nav-justified 각 탭 간격 최대치로 맞추기 -->
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">긍정</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">보통</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">부정</button>
+      
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0"> <!-- 긍정 키워드 모음-->
+        <h6>긍정적인 감정</h6>
+        <span class="tag">#기쁨</span>
+        <span class="tag">#즐거움</span>
+        <span class="tag">#행복함</span>
+      </div>
+      
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0"> <!-- 보통 키워드 모음-->
+        <h6>의구심</h6>
+        <span class="tag">#불확실한</span>
+        <span class="tag">#막막한</span>
+        <span class="tag">#걱정되는</span>
+        <span class="tag">#조심하는</span>
+        <span class="tag">#아득한</span>
+        <span class="tag">#이상한</span>
+        <span class="tag">#미지수의</span>
+        <span class="tag">#생소한</span>
+        <span class="tag">#고민되는</span>
+        <h6>욕심</h6>
+        <span class="tag">#시기심 드는</span>
+        <span class="tag">#부족한</span>
+        <span class="tag">#조급한</span>
+        <span class="tag">#성에 안차는</span>
+        <span class="tag">#약오르는</span>
+        <span class="tag">#찝찝한</span>
+        <span class="tag">#경쟁심 드는</span>
+        <span class="tag">#질투심 드는</span>
+        <h6>놀라움</h6>
+        <span class="tag">#놀라운</span>
+        <span class="tag">#당황스러운</span>
+        <span class="tag">#감격스러운</span>
+        <span class="tag">#충격적인</span>
+        <span class="tag">#흥분되는</span>
+        <span class="tag">#골치아픈</span>
+
+
+
+      </div>
+
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0"> <!-- 부정 키워드 모음-->
+        <h6>슬픈</h6>
+        <span class="tag">#슬픈</span>
+        <span class="tag">#측은한</span>
+        <span class="tag">#상처받는</span>
+        <span class="tag">#서러운</span>
+        <span class="tag">#소외감 드는</span>
+        <span class="tag">#우울한</span>
+        <span class="tag">#처량한</span>
+        <span class="tag">#공허한</span>
+        <span class="tag">#안타까운</span>
+        <span class="tag">#불행한</span>
+        <span class="tag">#절망스러운</span>
+        <span class="tag">#불쌍한</span>
+        <span class="tag">#외로운</span>
+        <span class="tag">#좌절감드는</span>
+        <h6>미움과 분노</h6>
+        <span class="tag">#싫은</span>
+        <span class="tag">#방해되는</span>
+        <span class="tag">#답답한</span>
+        <span class="tag">#지겨운</span>
+        <span class="tag">#속상한</span>
+        <span class="tag">#숨막히는</span>
+        <span class="tag">#억울한</span>
+        <span class="tag">#화난</span>
+        <span class="tag">#공격적인</span>
+        <span class="tag">#실증나는</span>
+        <span class="tag">#신경질적인</span>
+        <span class="tag">#역겨운</span>
+        <span class="tag">#불쾌한</span>
+        <span class="tag">#혐오하는</span>
+        <span class="tag">#약오르는</span>
+        <span class="tag">#나쁜</span>
+        <span class="tag">#귀찮은</span>
+        <span class="tag">#열받는</span>
+        <span class="tag">#짜증나는</span>
+        <h6>힘 없음</h6>
+        <span class="tag">#무능한</span>
+        <span class="tag">#지겨운</span>
+        <span class="tag">#쉬고싶은</span>
+        <span class="tag">#의존적인</span>
+        <span class="tag">#게으른</span>
+        <span class="tag">#낙담한</span>
+        <span class="tag">#피곤한</span>
+        <span class="tag">#가치없는</span>
+        <span class="tag">#지친</span>
+      </div>
+      <div class="container-fluid emotion-name">
+    </div>
+  </nav>
+
+
+
+
+
+  
+  <nav class="navbar fixed-bottom bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/test">기록</a>
+      <a class="navbar-brand" href="#">커뮤니티</a>
+      <a class="navbar-brand" href="#">셀프케어</a>
+      <a class="navbar-brand" href="/">마이</a>
+      
+    
+  </nav>
+</body>
+<script src="/static/keyword_record.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</html>

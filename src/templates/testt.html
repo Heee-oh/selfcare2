@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+            
+    .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 2px;
+    background-color: transparent;
+    border: 1px solid #7777c1; /* Adjust as needed */
+    border-radius: 50px; /* Adjust as needed */
+    font-size: 0.875em;
+    color: #495057;
+    }
+    .tag:hover {
+    background-color: #7777c1; /* Adjust as needed */
+    }
+    .inputchat {
+  position: fixed;
+  left: 15px;
+  bottom: 90px; /* Adjust this value based on the height of your navbar */
+  width: 92%; /* Ensure the input chat spans the full width */
+  
+  }
+    </style>
+</head>
+<body>
+    
+    <div class="tab-pane fade show active" id="tabpanel" role="tabpanel" aria-labelledby="nav-home-tab"> <!-- 긍정 키워드 모음-->
+
+    </div>
+
+    <div id="autocomplete"></div>
+    <div class="inputchat">
+        <input class="form-control" id="contentA" rows="1" placeholder="간단한 메모를 남겨보세요."></input>
+      </div>
+    <button> abc</button>
+    
+    <script>
+        const userinput = document.getElementById('contentA');
+        const autocomplete = document.getElementById('autocomplete');
+        const tabpanel = document.getElementById('tabpanel');
+    
+        const keywords = ['행복함', '즐거움', '슬픔','슬픔2','슬아픔']; // Replace this with your actual keywords
+        let tags = []; // This array will hold the selected tags
+    
+        // Load tags from localStorage
+        const savedTags = JSON.parse(localStorage.getItem('tags'));
+        if (savedTags) {
+            tags = savedTags;
+            tags.forEach(tag => {
+                const newTag = document.createElement('span');
+                newTag.className = 'tag';
+                newTag.textContent = '#' + tag;
+                newTag.addEventListener('click', function() {
+                    // Remove the tag from the DOM
+                    newTag.remove();
+    
+                    // Remove the tag from the tags array
+                    const index = tags.indexOf(tag);
+                    if (index > -1) {
+                        tags.splice(index, 1);
+                    }
+    
+                    // Update localStorage
+                    localStorage.setItem('tags', JSON.stringify(tags));
+                });
+                tabpanel.appendChild(newTag);
+            });
+        }
+    
+        userinput.addEventListener('input', function() {
+          // Clear the autocomplete box
+          autocomplete.innerHTML = '';
+    
+          // Check if the user input is not empty
+          if (userinput.value.length > 0) {
+            // Search for related keywords
+            const relatedKeywords = keywords.filter(keyword => keyword.includes(userinput.value));
+    
+            // Add the related keywords to the autocomplete box
+            relatedKeywords.forEach(keyword => {
+              const keywordElement = document.createElement('div');
+              keywordElement.textContent = keyword;
+              keywordElement.addEventListener('click', function() {
+                // Create a new tag
+                const newTag = document.createElement('span');
+                newTag.className = 'tag';
+                newTag.textContent = '#' + keyword;
+                newTag.addEventListener('click', function() {
+                    // Remove the tag from the DOM
+                    newTag.remove();
+    
+                    // Remove the tag from the tags array
+                    const index = tags.indexOf(keyword);
+                    if (index > -1) {
+                        tags.splice(index, 1);
+                    }
+    
+                    // Update localStorage
+                    localStorage.setItem('tags', JSON.stringify(tags));
+                });
+    
+                // Add the new tag to the tabpanel
+                tabpanel.appendChild(newTag);
+    
+                // Add the new tag to the tags array
+                tags.push(keyword);
+    
+                // Update localStorage
+                localStorage.setItem('tags', JSON.stringify(tags));
+    
+                // Clear the user input
+                userinput.value = '';
+                autocomplete.innerHTML = '';
+              });
+              autocomplete.appendChild(keywordElement);
+            });
+          }
+        });
+    
+        const button = document.querySelector('button');
+        button.addEventListener('click', function() {
+            alert(localStorage.getItem('tags'));
+        });
+    </script>
+</body>
+</html>
