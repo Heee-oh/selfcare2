@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid Example</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link href="../static/css/record_simple.css" rel="stylesheet">
+  <link href="../static/css/record_summary.css" rel="stylesheet">
 
 </head>
 <body>
@@ -19,8 +19,8 @@
   </nav>
   <nav class="navbar fixed-top top">
     <div class="container-fluid">
-      <a class="navbar-brand mb-0 h1" href="/test2">&lt; 뒤로</a>
-      <a class="navbar-brand mb-0 h1" type="button" onclick="goToNextPage()" >다음 &gt;</a>
+      <a class="navbar-brand mb-0 h1" href="/test4">&lt; 뒤로</a>
+      <a class="navbar-brand mb-0 h1" type="button" href="/test6" >다음 &gt;</a>
     </div>
     
 
@@ -33,32 +33,25 @@
     </div>
     <div class="container white-bg speech-bubble question">
       <p style="font-size: 13px;">
-        그런 감정을 느꼈구나... 그 감정의 원인을 3개 이하로 알려줘.
+        의 오늘은 이렇게 정리할 수 있겠다.
       </p>
     </div>
   </div>
 
-  <div class="p-3 mb-2 bg-subtle ">
-    <div class="container white-bg speech-bubble myanswer">
-      <p style="font-size: 13px;">
-          ...
-      </p>
-    </div>
-  </div>
-
-
-
-  <!-- 흰색 배경과 텍스트 -->
-  <div class="p-3 mb-2 bg-subtle text-emphasis-dark">
-    <div class="circle2">
-      <img src="../static/icon/캐릭터.png">
-    </div>
+  <div class="p-3 mb-2 bg-subtle text-emphasis-dark ">
     <div class="container white-bg speech-bubble question2">
       <p style="font-size: 13px;">
-        감정이나 원인에 대해 더 자세히 알려줄 수 있어?
+        내용
       </p>
     </div>
   </div>
+
+
+
+
+
+
+
 
 
 
@@ -102,6 +95,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="../static/record_simple_tmp.js"></script>
+  <script src="../static/record_summary.js"></script>
 </body>
 </html>

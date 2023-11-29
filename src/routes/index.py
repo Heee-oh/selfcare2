@@ -1,7 +1,8 @@
 from functools import wraps
 from flask import Blueprint, jsonify, redirect, render_template, make_response, Flask, session, request
 import pandas as pd
-from .model_index import RecordModel
+import pymysql
+from .model_index import RecordModel,RecordData
 from flask_jwt_extended import jwt_required, get_jwt_identity, jwt_refresh_token_required
 
 
@@ -31,40 +32,17 @@ def wbs():
     data_dict = data.to_dict('records')
     return render_template('wbs.html', data=data_dict)
 
-@index_bp.route('/test')
-@jwt_required
-def test():
-    return render_template('home.html')
-
-@index_bp.route('/test1')
-@jwt_required
-def test1():
-    return render_template('keyword_record.html')
-
-@index_bp.route('/test2')
-@jwt_required
-def test2():
-    return render_template('record_simple.html')
-
-
-@index_bp.route('/save_data', methods=['POST'])
-@jwt_required           # jwt 토큰 확인 (id확인용으로 필수)
-def save_data():
-    data = request.get_json()
-
-    user_id = get_jwt_identity() #사용자 고유 id 
-
-    print(data['keywords'])  # keywords 값 출력
+# @index_bp.route('/community')
+# def community():
+#     db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
     
-    content = data['content']
-    
-    keywords = data['keywords']
+#     with db.cursor() as cursor:
+#         sql = "SELECT * FROM mind_recordv_1"
+#         cursor.execute(sql)
+#         records = cursor.fetchall()
 
-    record_model = RecordModel()
-    record_model.insert_record(user_id, content, keywords)
-
-    return jsonify({'message': 'Data saved successfully'}), 200
-
+#     record_objects = [RecordData(record).serialize() for record in records]
+#     return jsonify(record_objects)
 
 
 

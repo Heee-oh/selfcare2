@@ -1,6 +1,7 @@
 """
 Flask Kakao OAuth Application Sample
 """
+import os
 from flask import Flask, render_template, request, jsonify, make_response, session, redirect, url_for
 from flask_jwt_extended import (
     JWTManager, create_access_token, 
@@ -15,6 +16,11 @@ from model import UserModel, UserData
 from flask import Flask
 from flask import Flask
 from routes.index import index_bp
+from routes.model_index import RecordModel
+from routes.record import record
+from routes.community import community
+
+
 
 
 
@@ -27,9 +33,13 @@ app.config['JWT_COOKIE_SECURE'] = False
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 3600
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 3600 * 24
+
 jwt = JWTManager(app)
 
+
 app.register_blueprint(index_bp)
+app.register_blueprint(record)
+app.register_blueprint(community)
 
 
 @app.route("/")
@@ -160,8 +170,14 @@ def logout():
 #     # 가져온 유저 정보를 이용하여 홈페이지를 렌더링합니다.
 #     return redirect('/')
     
+
+#
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 

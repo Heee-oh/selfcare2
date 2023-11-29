@@ -7,7 +7,7 @@ import pymysql
 
 class UserModel:
     def __init__(self):
-        self.db = pymysql.connect(host='127.0.0.1', user='root', password='qhrwl123', db='test', charset='utf8')
+        self.db = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='test', charset='utf8')
 
     def upsert_user(self, user):
         with self.db.cursor() as cursor:

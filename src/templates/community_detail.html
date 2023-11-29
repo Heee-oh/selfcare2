@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <!-- 요기에 구글 머티리얼 아이콘 -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+
+  <title>여기에 진스타그램 만들꺼임 </title>
+</head>
+
+<style>
+.main_body {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    background-color: #FAFAFA;
+}
+
+.left_body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.feed_box {
+    background-color: white;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    min-height: auto;
+    padding-bottom: 10px;
+    
+}
+
+.feed_img{
+  
+    width: 100%;
+    object-fit: contain;
+}
+
+.feed_content{
+  
+    padding: 0px 10px;
+}
+
+.feed_like{
+    padding: 0px 10px;
+}
+
+.feed_reply{
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.feed_txt{
+    font-size: 14px;
+}
+
+
+
+.feed_icon{
+    padding: 5px 5px 0px 5px;
+    display: flex;
+    justify-content: space-between;
+}span{
+     padding-right: 5px;
+}
+
+.feed_name{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.feed_name_txt{
+    font-size: 14px;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+
+.profile_box {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+.profile_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.name_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.name_content_txt{
+    font-size: 12px;
+    padding: 0px 10px;
+    font-weight: bold;
+    color: lightgray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 190px;
+}
+
+.big_profile_box {
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.link_txt{
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.recommend_box {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+}
+
+
+.top {
+  background-color: whitesmoke;
+  height: 80px;
+  }
+
+  .top p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .bottom {
+  height: 80px; 
+
+  background-color: whitesmoke;
+}
+
+.bi-three-dots {
+  width: 30px;
+  height: 20px;
+}
+
+#comment input {
+  width: 95%;
+
+}
+
+
+
+</style>
+
+<body>
+
+<!-- 상단 내비게이션 바 -->
+<nav class="navbar fixed-top border-bottom bg-body-subtitle top ">
+  <div class="container-fluid">
+    
+    <p class="mt-2">커뮤니티</p>
+    
+
+
+    <div class="mb-3"> 
+      
+      <a class="navbar-brand" href="#">
+        <img src="../static/icon/알람.png">
+      </a>
+      <a class="navbar-brand" href="#">
+        <img src="../static/icon/설정.png">
+      </a>
+    </div>
+
+  </div>
+  
+
+
+</nav>
+
+<!-- 바디 영역 -->
+<div class="container-fluid main_body">
+  <div class="left_body">
+
+    <!--처음 껍데기-->
+    <div class="mb-4"> </div>
+
+    <!--이미지가 있을 경우-->
+    <div class="feed_box" >
+    
+      <div class="feed_name d-flex justify-content-between">
+        {% for situation in record.situation.split(',') %}
+        #{{ situation.strip() }}
+        {% endfor %}
+        {% for keyword in record.keyword.split(',') %}
+          #{{ keyword.strip() }}
+        {% endfor %}
+
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+          </svg>
+        </div>
+      </div>
+      {% if record.image %}
+      <img class="feed_img" src="../{{ record.image }}">
+      {% endif %}
+      
+      <div class="feed_content mt-3">
+        <p class="feed_txt"> 
+          {{ record.content }}
+        </p>
+      </div>
+    
+      <div class="feed_icon">
+        <div>
+          <span class="material-icons-outlined">  <!-- 좋아요-->
+            favorite_border
+          </span>
+          <span id="sympathy-count" style=" font-size: 15px; margin-left: -8px;">{{ record.sympathy }}</span>
+          <span class="material-icons-outlined"> <!-- 댓글 -->
+            mode_comment
+          </span>
+          <a id="count" style=" font-size: 15px; margin-left: -8px;" >
+            {{ record.comment_count }}
+          </a>
+        </div>
+        <p class="mx-1" id="time"></p>
+      </div>
+
+
+
+      <!--댓글입력부분-->
+      <div id="comment" class="d-flex justify-content-center align-items-center mt-2">
+        <input class="form-control" type="text" placeholder="따듯한 관심을 댓글로 보여주세요.">
+      </div>
+
+
+      <!--댓글 부분-->
+      <div class="d-flex justify-content-center mb-5" >
+        <div class="container-fluid row mt-2 mb-5" style="margin-left: 5px;" id="comment_main" >
+
+
+          
+
+
+
+        </div>
+      </div>
+      
+    </div>
+
+
+
+
+
+
+
+
+<div class="container">
+  
+  <nav class="navbar fixed-bottom border-top bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/test">
+        <img src="../static/icon/기록 셀렉x.png">
+    </a>
+    <a class="navbar-brand"  href="/community">
+      <img src="../static/icon/커뮤니티 셀렉.png">
+
+    </a>
+    <a class="navbar-brand" href="#">
+      <img src="../static/icon/도움닫기.png">
+    </a>
+    <a class="navbar-brand" href="/">
+      <img src="../static/icon/마이.png">
+    </a>
+      
+</div>
+
+    
+
+</nav>
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+<script>
+
+
+
+window.onload = function() {
+  let path = window.location.pathname; // "/community/5"
+  let parts = path.split('/'); // ["", "community", "5"]
+  let id = parts[parts.length - 1]; // "5"
+
+  fetch('/get-comments/' + id)
+    .then(response => response.json())
+    .then(data => {
+      let comment_main = document.getElementById('comment_main');
+      comment_main.innerHTML = '';
+
+      data.comments.forEach((comment, index) => {
+        let newCommentHTML = `
+    <div class="container-fluid row mt-2${index !== 0 ? ' border-top' : ''}">
+      <div class="col-2">
+          <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
+        </div>
+       <div class="col-10 mt-2">
+        <p>${comment.comment} </p> 
+        </div>
+      </div>
+        `;
+
+        comment_main.innerHTML += newCommentHTML;
+      }); 
+    });
+};
+
+
+  function getCookie(name) {
+  var cookieArr = document.cookie.split(";");
+
+  for(var i = 0; i < cookieArr.length; i++) {
+    var cookiePair = cookieArr[i].split("=");
+    
+    if(name == cookiePair[0].trim()) {
+      return decodeURIComponent(cookiePair[1]);
+    }
+  }
+
+  return null;
+}
+
+// 좋아요 클릭 이벤트 및 db 요청
+let path = window.location.pathname; // "/community/5"
+let parts = path.split('/'); // ["", "community", "5"]
+let id = parts[parts.length - 1]; // "5"
+
+let increment = true;
+document.querySelector('.material-icons-outlined').addEventListener('click', function() {
+  fetch('/update-sympathy', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': getCookie('csrf_access_token'),
+    },
+    body: JSON.stringify({ mr_id: id, increment: increment }) // replace `record.mr_id` with actual id
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update the icon and sympathy count
+      this.textContent = data.sympathy > 0 ? 'favorite' : 'favorite_border';
+      document.getElementById('sympathy-count').textContent = data.sympathy;
+    }
+
+    // Toggle the increment value
+    increment = !increment;
+  });
+});
+
+
+
+// 댓글 작성
+
+document.querySelector('#comment input').addEventListener('keypress', function(e) {
+  // Check if the key pressed was 'Enter'
+  if (e.key === 'Enter') {
+    // Prevent form submission
+    e.preventDefault();
+
+    // Create new comment HTML
+    let newCommentHTML = `
+  <div class="container-fluid row mt-2">
+    <div class="col-2">
+      <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
+    </div>
+    <div class="col-10 mt-2">
+      <p>${this.value}</p> <!-- Use the input's current value -->
+    </div>
+  </div>
+  `;
+  let comment_main = document.getElementById('comment_main')
+  if (comment_main.childElementCount === 0) {
+    comment_main.innerHTML += newCommentHTML;
+  } else {
+    let newCommentHTML = `
+  <div class="container-fluid row mt-2 border-top">
+    <div class="col-2">
+      <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
+    </div>
+    <div class="col-10 mt-2">
+      <p>${this.value}</p> <!-- Use the input's current value -->
+    </div>
+  </div>
+      `;
+  comment_main.innerHTML += newCommentHTML;
+  }
+    
+    //db에 댓글 저장
+    fetch('/add-comment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': getCookie('csrf_access_token'),
+      },
+      body: JSON.stringify({ mr_id:id, content: this.value }) 
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Update the comment count
+        document.getElementById('count').textContent = data.new_comment_count;
+      }
+    });
+
+    // Clear the input
+    this.value = '';
+  }
+
+
+});
+</script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+-->
+
+</body>
+</html>
