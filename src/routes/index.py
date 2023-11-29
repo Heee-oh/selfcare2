@@ -32,7 +32,7 @@ def wbs():
     return render_template('wbs.html', data=data_dict)
 
 @index_bp.route('/test')
-@jwt_required
+# @jwt_required
 def test():
     return render_template('home.html')
 
@@ -64,7 +64,6 @@ def save_data():
     record_model.insert_record(user_id, content, keywords)
 
     return jsonify({'message': 'Data saved successfully'}), 200
-
 
 
 
