@@ -256,27 +256,12 @@
 
 
       <!--댓글 부분-->
-      <div class="d-flex justify-content-center mb-4" >
-        <div class="container-fluid row mt-2" style="margin-left: 5px;" id="comment_main" >
+      <div class="d-flex justify-content-center mb-5" >
+        <div class="container-fluid row mt-2 mb-5" style="margin-left: 5px;" id="comment_main" >
 
-          <div class="container-fluid row mt-2">
-            <div class="col-2">
-              <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
-            </div>
-            <div class="col-10 mt-2">
-              <p>Comment Content</p>
-            </div>
-          </div>
+
           
-          <!--새로 추가된 부분은 클래스에 border-top 넣기-->
-          <div class="container-fluid row mt-2 border-top">
-            <div class="col-2">
-              <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
-            </div>
-            <div class="col-10 mt-2">  
-              <p>내용</p>
-            </div>   
-          </div>
+
 
 
         </div>
@@ -324,6 +309,38 @@
         crossorigin="anonymous"></script>
 
 <script>
+
+
+
+window.onload = function() {
+  let path = window.location.pathname; // "/community/5"
+  let parts = path.split('/'); // ["", "community", "5"]
+  let id = parts[parts.length - 1]; // "5"
+
+  fetch('/get-comments/' + id)
+    .then(response => response.json())
+    .then(data => {
+      let comment_main = document.getElementById('comment_main');
+      comment_main.innerHTML = '';
+
+      data.comments.forEach((comment, index) => {
+        let newCommentHTML = `
+    <div class="container-fluid row mt-2${index !== 0 ? ' border-top' : ''}">
+      <div class="col-2">
+          <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
+        </div>
+       <div class="col-10 mt-2">
+        <p>${comment.comment} </p> 
+        </div>
+      </div>
+        `;
+
+        comment_main.innerHTML += newCommentHTML;
+      }); 
+    });
+};
+
+
   function getCookie(name) {
   var cookieArr = document.cookie.split(";");
 

@@ -156,6 +156,37 @@ class CommentModel:
 
         return new_comment_id
     
+    def get_comment(self, mr_id):
+        with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
+            sql = "SELECT * FROM comment_table WHERE mr_id = %s ORDER BY comment_id"
+            cursor.execute(sql, (mr_id,))
+            comments = cursor.fetchall()
+
+        return [CommentData(comment) for comment in comments]
+    
+class CommentData:
+    def __init__(self, comment=None):
+        if comment:
+            self.id = comment['id']
+            self.mr_id = comment['mr_id']
+            self.comment = comment['comment']
+            self.comment_id = comment['comment_id']
+        else:
+            self.id = None
+            self.mr_id = None
+            self.comment = None
+            self.comment_id = None
+
+        # Add any additional methods or properties as needed
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "mr_id": self.mr_id,
+            "comment": self.comment,
+            "comment_id": self.comment_id
+        }
+
 
 
 class RecordData :

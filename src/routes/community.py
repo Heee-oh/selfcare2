@@ -81,3 +81,12 @@ def add_comment():
         return jsonify(success=False, message="Record not found"), 404
     else:
         return jsonify(success=True, message="Comment added successfully"), 200
+    
+
+
+@community.route('/get-comments/<int:mr_id>', methods=['GET'])
+def get_comments(mr_id):
+    comment_data = CommentModel()
+    comments = comment_data.get_comment(mr_id)
+
+    return jsonify(comments=[comment.serialize() for comment in comments])
