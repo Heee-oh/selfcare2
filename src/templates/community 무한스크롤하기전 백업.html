@@ -174,11 +174,6 @@
 .tag_size {
   font-size: 12px;
 }
-#post {
-  position: fixed;
-  top: 0;
-  width: 100%;  
-}
 </style>
 
 <body>
@@ -209,12 +204,23 @@
 
 <!-- 바디 영역 -->
 <div class="container-fluid main_body">
-  <div class="left_body mt-4" id="list">
+  <div class="left_body" id="list">
+
+
+
+
+ 
+
+
 
     <!--이미지가 없을 경우 -->
-    <div class="border feed_box positio" id="post">
+    <div class="border feed_box" id="post">
+
+  
 
     </div>
+
+
 
   </div>
 </div>
@@ -257,42 +263,19 @@
 
 <script>
 
+  document.getElementById('post').addEventListener('click', function(){
+    window.location.href = "/community/";
+  });
 
-
-
-// 무한스크롤
-let page = 1;
-let perPage = 10;
-let isLoading = false;
-
-fetchPosts();
-
-window.onscroll = function() {
-  if (!isLoading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    fetchPosts();
-  }
-};
-
-function fetchPosts() {
-  isLoading = true;
-  console.log('Fetching data...');
-
-  // User is at the bottom of the page
-  fetch(`/community/data?page=${page}&limit=${perPage}`)
+  fetch('/community/data')
     .then(response => response.json())
     .then(records => {
-      // If there are no more records, stop making requests
-      if (records.length === 0) {
-        isLoading = false;
-        return;
-      }
-
       var postsContainer = document.getElementById('list');
 
       records.forEach(record => {
-        var post = document.createElement('div');
+          var post = document.createElement('div');
           post.className = 'border feed_box';
-          post.id = `${record.mr_id}`;
+          post.id = `${record.mr_id}}`;
           console.log(record.image);
           var imageHTML = record.image ? `<img class="feed_img" src="../${record.image}">` : '';
 
@@ -321,95 +304,9 @@ function fetchPosts() {
                   </div>
               </div>
           `;
-          post.addEventListener('click', function() {
-              console.log(post.id);
-              var id = post.id;
-              window.location.href = "/community/" + id;
-          });
-
-          if (postsContainer.firstChild) {
-            postsContainer.insertBefore(post, postsContainer.firstChild);
-          } else {
-            postsContainer.appendChild(post);
-          }
+          postsContainer.appendChild(post);
       });
-
-      page++;
-      isLoading = false;
     });
-  }
-
-
-
-
-// 무한스크롤
-
-
-
-// window.onscroll = function() {
-//   if (!isLoading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-//     isLoading = true;
-//     console.log('Fetching data...');
-
-//     // User is at the bottom of the page
-//     fetch(`/community/data?page=${page}`)
-//       .then(response => response.json())
-//       .then(records => {
-
-//         if (records.length === 0) {
-//           isLoading = false;
-//           return;
-//         }
-        
-//         var postsContainer = document.getElementById('list');
-
-//         records.forEach(record => {
-
-//           var post = document.createElement('div');
-//           post.className = 'border feed_box';
-//           post.id = `${record.mr_id}}`;
-//           console.log(record.image);
-//           var imageHTML = record.image ? `<img class="feed_img" src="../${record.image}">` : '';
-
-//           post.innerHTML = `
-//               <div class="feed_name d-flex justify-content-between" >
-//                 <p class="tag_size">${
-//                   record.situation.split(',').map(s => '#' + s.trim()).join(' ') + ' ' +
-//                   record.keyword.split(',').map(k => '#' + k.trim()).join(' ')
-//                 }</p>
-//                   <div>
-//                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-//                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-//                   </svg>
-//                 </div>
-//               </div>
-//               ${imageHTML}
-//               <div class="feed_content mt-3">
-//                   <p class="feed_txt">${record.content}</p> <!-- 내용 데이터 -->
-//               </div>
-//               <div class="feed_icon">
-//                   <div>
-//                       <span class="material-icons-outlined">favorite_border</span>
-//                       <a id="count" style="font-size: 15px; margin-left: -8px;">${record.sympathy}</a> <!-- 좋아요 데이터 -->
-//                       <span class="material-icons-outlined">mode_comment</span>
-//                       <a id="count" style="font-size: 15px; margin-left: -8px;">${record.comment_count}</a> <!-- 댓글 데이터 -->
-//                   </div>
-//               </div>
-//           `;
-
-//           if (postsContainer.firstChild) {
-//             postsContainer.insertBefore(post, postsContainer.firstChild);
-//           } else {
-//             postsContainer.appendChild(post);
-//           }
-
-//         });
-//       page++;
-//       isLoading = false;
-//       });
-//   }
-// };
-
 
 
 // Use the records data in your JavaScript code...

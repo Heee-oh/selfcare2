@@ -25,9 +25,12 @@
   height: auto;
 }
 
-#ma2 {
+#upload_community {
   width: 200px;
   height: auto;
+}
+.overlay-text {
+    pointer-events: none;
 }
   </style>
 </head>
@@ -43,7 +46,7 @@
   <nav class="navbar fixed-top top">
     <div class="container-fluid">
       <a class="navbar-brand mb-0 h1" href="/test5">&lt; 뒤로</a>
-      <a class="navbar-brand mb-0 h1" type="button" href="/test" >다음 &gt;</a>
+      <a class="navbar-brand mb-0 h1" type="button" id="an_post" >다음 &gt;</a>
     </div>
     
 
@@ -74,7 +77,7 @@
           커뮤니티에 글을 공개할까?
         </p>
         <div class="image-container">
-          <img src="../static/icon/커뮤니티업로드.png" id="ma2">
+          <img src="../static/icon/커뮤니티업로드.png" id="upload_community">
           <div class="overlay-text">커뮤니티에 기록 게시하기</div>
         </div>
   
@@ -112,7 +115,7 @@
         <a class="navbar-brand" href="/test">
           <img src="../static/icon/record.png">
       </a>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/community">
         <img src="../static/icon/커뮤니티.png">
   
       </a>
