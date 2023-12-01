@@ -4,7 +4,10 @@ from functools import wraps
 from flask import Blueprint, jsonify, redirect, render_template, make_response, Flask, session, request, url_for
 import pandas as pd
 import pymysql
+
 from .model_index import RecordModel,RecordData, CommentModel
+
+from .model_index import CommentModel, RecordModel,RecordData
 from flask_jwt_extended import jwt_required, get_jwt_identity, jwt_refresh_token_required
 from werkzeug.utils import secure_filename
 from datetime import datetime
@@ -109,8 +112,6 @@ def delete_post(postId):
     record_model = RecordModel()
     Comment_Model = CommentModel()
     Comment_Model.delete_comment(postId)
-
-
     record_model.delete_record(postId)
 
 
