@@ -4,7 +4,7 @@ from functools import wraps
 from flask import Blueprint, jsonify, redirect, render_template, make_response, Flask, session, request, url_for
 import pandas as pd
 import pymysql
-from .model_index import RecordModel,RecordData
+from .model_index import CommentModel, RecordModel,RecordData
 from flask_jwt_extended import jwt_required, get_jwt_identity, jwt_refresh_token_required
 from werkzeug.utils import secure_filename
 from datetime import datetime
@@ -18,10 +18,11 @@ record = Blueprint('record', __name__)
 
 
 @record.route('/test')
-# @jwt_required
+@jwt_required
 def test():
     record_data = RecordModel()
-    records = record_data.get_my_today_records()
+    user_id = get_jwt_identity()
+    records = record_data.get_my_today_records(user_id)
     record = records[0].serialize() if records else None
 
     like_records = record_data.get_all_like_records()
@@ -106,6 +107,8 @@ def save_data():
 @record.route('/delete/<postId>', methods=['DELETE'])
 def delete_post(postId):
     record_model = RecordModel()
+    Comment_Model = CommentModel()
+    Comment_Model.delete_comment(postId)
     record_model.delete_record(postId)
     return jsonify({'message': 'Data deleted successfully'}), 200
 

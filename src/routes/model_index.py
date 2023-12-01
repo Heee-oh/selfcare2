@@ -5,7 +5,7 @@ import jwt
 
 class RecordModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
         
     def insert_record(self, id, content, keywords, situationi, anonymous, image_data, content_happy):
         with self.db.cursor() as cursor:
@@ -69,15 +69,25 @@ class RecordModel:
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
-    
-    def get_my_today_records(self):
+
+    def get_my_today_records(self, id):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
-            sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
-            cursor.execute(sql)
+            # sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
+            sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW()) AND id = %s"
+            cursor.execute(sql,(id,))
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
+        
+    # def get_my_today_records(self):
+    #     with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
+    #         sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
+    #         cursor.execute(sql)
+    #         records = cursor.fetchall()
+
+    #     return [RecordData(record) for record in records]
     
+    # 특정 게시물 삭제 (mr_id)
     def delete_record(self, mr_id):
         try:
             with self.db.cursor() as cursor:
@@ -88,7 +98,7 @@ class RecordModel:
         except:
             return False
         
-
+    # 특정 게시물 get
     def get_record(self, mr_id):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
             sql = "SELECT * FROM mind_record WHERE mr_id = %s"
@@ -97,6 +107,7 @@ class RecordModel:
 
         return RecordData(record)
     
+    #좋아요 
     def update_sympathy(self, mr_id, increment):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
             # Fetch the record
@@ -109,7 +120,7 @@ class RecordModel:
 
             new_sympathy = record['sympathy'] + 1 if increment else record['sympathy'] - 1
 
-        # Update the sympathy value
+ 
             sql = "UPDATE mind_record SET sympathy = %s WHERE mr_id = %s"
             cursor.execute(sql, (new_sympathy, mr_id))
         self.db.commit()
@@ -130,11 +141,11 @@ class RecordModel:
 
 class CommentModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
 
     def add_comment(self, post_user_id, mr_id, content):
         with self.db.cursor() as cursor:
-            # Insert the new comment
+ 
             sql = """
             INSERT INTO comment_table (id, mr_id, comment)
             VALUES (%s, %s,%s)
@@ -142,10 +153,9 @@ class CommentModel:
             cursor.execute(sql, (post_user_id, mr_id,content))
             self.db.commit()
 
-            # Get the ID of the new comment
+
             new_comment_id = cursor.lastrowid
 
-            # Update the comment count in the mind_record table
             sql = """
             UPDATE mind_record
             SET comment_count = comment_count + 1
@@ -164,6 +174,17 @@ class CommentModel:
 
         return [CommentData(comment) for comment in comments]
     
+    def delete_comment(self, mr_id):
+        try:
+            with self.db.cursor() as cursor:
+                sql = "DELETE FROM comment_table WHERE comment_id = %s"
+                cursor.execute(sql, (mr_id,))
+            self.db.commit()
+
+            return True
+        except:
+            return False
+        
 class CommentData:
     def __init__(self, comment=None):
         if comment:
