@@ -31,12 +31,12 @@ function getCookie(name) {
   return null;
 }
 
-document.getElementById('an_post').addEventListener('click', function(e) {
+document.getElementById('an_post').addEventListener('click', function(event) {
   var situation = JSON.parse(localStorage.getItem('situation'));
   var tags = JSON.parse(localStorage.getItem('tags'));
   var content = JSON.parse(localStorage.getItem('content'));
   var contenthappy = JSON.parse(localStorage.getItem('contenthappy'));
-  
+  event.target.removeEventListener('click', arguments.callee);
   if(!situation || !tags || !content || !contenthappy) {
     Swal.fire({
       icon: 'error',
@@ -94,11 +94,13 @@ document.getElementById('an_post').addEventListener('click', function(e) {
 
 // upload_community id를 이용해서 버튼 누르면 post로 서버에 데이터 보내기 
 // 이땐 비밀글이 아니라서 익명은 1로 
-document.getElementById('upload_community').addEventListener('click', function(e) {
+document.getElementById('upload_community').addEventListener('click', function(event) {
   var situation = JSON.parse(localStorage.getItem('situation'));
   var tags = JSON.parse(localStorage.getItem('tags'));
   var content = JSON.parse(localStorage.getItem('content'));
   var contenthappy = JSON.parse(localStorage.getItem('contenthappy'));
+
+  event.target.removeEventListener('click', arguments.callee);
 
   if(!situation || !tags || !content || !contenthappy) {
     Swal.fire({

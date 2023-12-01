@@ -69,14 +69,14 @@ class RecordModel:
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
-
     def get_my_today_records(self, id):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
             # sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
             sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW()) AND id = %s"
             cursor.execute(sql,(id,))
             records = cursor.fetchall()
-
+            print(id)
+            print(records)
         return [RecordData(record) for record in records]
         
     # def get_my_today_records(self):
@@ -184,7 +184,7 @@ class CommentModel:
             return True
         except:
             return False
-        
+
 class CommentData:
     def __init__(self, comment=None):
         if comment:
