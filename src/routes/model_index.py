@@ -70,12 +70,14 @@ class RecordModel:
 
         return [RecordData(record) for record in records]
     
-    def get_my_today_records(self):
+    def get_my_today_records(self, id):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
-            sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
-            cursor.execute(sql)
+            # sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
+            sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW()) AND id = %s"
+            cursor.execute(sql,(id,))
             records = cursor.fetchall()
-
+            print(id)
+            print(records)
         return [RecordData(record) for record in records]
     
     def delete_record(self, mr_id):
@@ -163,6 +165,17 @@ class CommentModel:
             comments = cursor.fetchall()
 
         return [CommentData(comment) for comment in comments]
+    
+    def delete_comment(self, mr_id):
+        try:
+            with self.db.cursor() as cursor:
+                sql = "DELETE FROM comment_table WHERE comment_id = %s"
+                cursor.execute(sql, (mr_id,))
+            self.db.commit()
+
+            return True
+        except:
+            return False
     
 class CommentData:
     def __init__(self, comment=None):
