@@ -12,13 +12,25 @@ const keywords = ['불확실한', '막막한', '걱정되는', '조심하는', '
 let tags = []; // This array will hold the selected tags
 
 // Load tags from localStorage
-const savedTags = JSON.parse(localStorage.getItem('tags'));
+let savedTags = [];
+
+if(localStorage.getItem('tags_u')) {
+  savedTags = JSON.parse(localStorage.getItem('tags_u'));
+  
+}else{
+  savedTags = JSON.parse(localStorage.getItem('tags'));
+
+}
+
+
 if (savedTags) {
     tags = savedTags;
+    
     tags.forEach(tag => {
         const newTag = document.createElement('span');
         newTag.className = 'tag';
         newTag.textContent = '#' + tag;
+
         newTag.addEventListener('click', function() {
             // Remove the tag from the DOM
             newTag.remove();
@@ -33,6 +45,8 @@ if (savedTags) {
             localStorage.setItem('tags', JSON.stringify(tags));
         });
         tabpanel.appendChild(newTag);
+        localStorage.setItem('tags', JSON.stringify(tags));
+        
     });
 }
 userinput.addEventListener('input', function() {

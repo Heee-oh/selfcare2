@@ -39,7 +39,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
   var content = JSON.parse(localStorage.getItem('content'));
   var contenthappy = JSON.parse(localStorage.getItem('contenthappy'));
   event.target.removeEventListener('click', arguments.callee);
-  if(!situation || !tags || !content || !contenthappy) {
+  if(!situation || !tags) {
     Swal.fire({
       icon: 'error',
       title: '잘못된 접근입니다.',
@@ -63,7 +63,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
   };
 
   $.ajax({
-    url: '/save_data',
+    url: '/update-post/' + localStorage.getItem('mr_id_u'),
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,10 +78,18 @@ document.getElementById('an_post').addEventListener('click', function(event) {
       localStorage.removeItem('content');
       localStorage.removeItem('contenthappy');
 
+      localStorage.removeItem('mr_id_u');
+      localStorage.removeItem('situation_u');
+      localStorage.removeItem('tags_u');
+      localStorage.removeItem('content_u');
+      localStorage.removeItem('contenthappy_u');
+      localStorage.removeItem('imageData_u');
+      localStorage.removeItem('anonymous_u');
+
       Swal.fire({
         icon: 'success',
-        title: '작성 완료',
-        text: '성공적으로 작성했습니다.',
+        title: '수정 완료',
+        text: '성공적으로 수정했습니다.',
         willClose: function() {
           window.location.href = '/test';
         }
@@ -104,7 +112,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
 
   event.target.removeEventListener('click', arguments.callee);
 
-  if(!situation || !tags || !content || !contenthappy) {
+  if(!situation || !tags ) {
     Swal.fire({
       icon: 'error',
       title: '잘못된 접근입니다.',
@@ -127,7 +135,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
   };
 
   $.ajax({
-    url: '/save_data',
+    url: '/update-post/' + localStorage.getItem('mr_id_u'),
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -142,10 +150,19 @@ document.getElementById('upload_community').addEventListener('click', function(e
       localStorage.removeItem('content');
       localStorage.removeItem('contenthappy');
       
+      localStorage.removeItem('mr_id_u');
+      localStorage.removeItem('situation_u');
+      localStorage.removeItem('tags_u');
+      localStorage.removeItem('content_u');
+      localStorage.removeItem('contenthappy_u');
+      localStorage.removeItem('imageData_u');
+      localStorage.removeItem('anonymous_u');
+    
+      
       Swal.fire({
         icon: 'success',
-        title: '작성 완료',
-        text: '성공적으로 작성했습니다.',
+        title: '수정 완료',
+        text: '성공적으로 수정했습니다.',
         willClose: function() {
           window.location.href = '/test';
         }
