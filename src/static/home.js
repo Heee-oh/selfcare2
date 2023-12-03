@@ -99,5 +99,12 @@
     });
 
 
+document.querySelectorAll('.btn').forEach(function(button) {
+  button.addEventListener('click', function(event) {
+      var id = event.target.id;
 
-    
+      window.location.href = '/community/' + id;      
+
+  });
+});
+
