@@ -2,6 +2,7 @@
 window.onload = function() {
   const myanswer = document.querySelector('.myanswer p');
   const keywordsave = JSON.parse(localStorage.getItem('situation'));
+  alert(JSON.stringify(localStorage.getItem('situation')));
   if (keywordsave) {
     myanswer.textContent = keywordsave.join(', ');
   }
