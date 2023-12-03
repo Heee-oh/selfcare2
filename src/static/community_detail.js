@@ -103,7 +103,7 @@ document.querySelector('.material-icons-outlined').addEventListener('click', asy
 
   isProcessing = true; // 처리 시작
 
-  update_like();
+  await update_like();
   
   fetch('/get_like', {
     method: 'POST',
@@ -117,8 +117,9 @@ document.querySelector('.material-icons-outlined').addEventListener('click', asy
   .then(data => {
     
     document.getElementById('sympathy-count').textContent = data.sympathy;
+
     increment = !increment;
-    
+
   })
   .finally(() => {
     isProcessing = false; // 처리 완료
@@ -150,7 +151,7 @@ async function getFirstlike() {
 // 좋아요 업데이트
 async function update_like() {
   
-  fetch('/like', {
+  await fetch('/like', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
