@@ -5,7 +5,7 @@ import jwt
 
 class RecordModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
         
     def insert_record(self, id, content, keywords, situationi, anonymous, image_data, content_happy):
         with self.db.cursor() as cursor:
@@ -26,6 +26,7 @@ class RecordModel:
     def serialize(self):
         return {
             "id": self.id,
+            "mr_id": self.mr_id,
             "mind_time": self.mind_time,
             "open_close": self.open_close,
             "content": self.content,
@@ -69,7 +70,6 @@ class RecordModel:
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
-
     def get_my_today_records(self, id):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
             # sql = "SELECT * FROM mind_record WHERE DATE(mind_time) = DATE(NOW())"
@@ -127,6 +127,31 @@ class RecordModel:
 
         return new_sympathy
     
+    def get_like(self, mr_id):
+        with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
+            sql = "SELECT sympathy FROM mind_record WHERE mr_id = %s"
+            cursor.execute(sql, (mr_id,))
+            result = cursor.fetchone()
+            if result:
+                return result['sympathy']
+            else:
+                return None
+    
+    def update_record(self, mr_id, content, keywords, situationi, anonymous, image_data, content_happy):
+        with self.db.cursor() as cursor:
+            sql = """
+            UPDATE mind_record
+            SET content = %s, situation = %s, keyword = %s, image = %s, happy = %s, open_close = %s, mind_time = %s
+            WHERE mr_id = %s
+            """
+            mind_time = datetime.now()
+            open_close = anonymous  # 기본값
+            situation =  ', '.join(situationi)  # 기본값
+            keywords_str = ', '.join(keywords)  # 문자 배열 합치기
+            cursor.execute(sql, (content, situation, keywords_str, image_data, content_happy, open_close, mind_time,mr_id))
+        self.db.commit()
+    
+    
 
     # def serialize(self):
     #     return {
@@ -141,7 +166,7 @@ class RecordModel:
 
 class CommentModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
 
     def add_comment(self, post_user_id, mr_id, content):
         with self.db.cursor() as cursor:
@@ -174,11 +199,13 @@ class CommentModel:
 
         return [CommentData(comment) for comment in comments]
     
-    def delete_comment(self, mr_id):
+        
+    # id에 따른 사용자의 댓글 삭제 
+    def delete_comment(self, comment_id):
         try:
             with self.db.cursor() as cursor:
                 sql = "DELETE FROM comment_table WHERE comment_id = %s"
-                cursor.execute(sql, (mr_id,))
+                cursor.execute(sql, (comment_id,))
             self.db.commit()
 
             return True

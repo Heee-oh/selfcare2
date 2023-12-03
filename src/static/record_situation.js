@@ -5,16 +5,30 @@ const tabpanel = document.getElementById('tabpanel');
 window.onload = function() {
   const myanswer = document.querySelector('.myanswer p');
   const keywordsave = JSON.parse(localStorage.getItem('tags'));
+  alert(JSON.stringify(localStorage.getItem('tags')));
   if (keywordsave) {
     myanswer.textContent = keywordsave.join(', ');
   }
 };
 
-const keywords = ['학업/고시','연애','정신건강']; // Replace this with your actual keywords
-let situation = []; // This array will hold the selected tags
+const keywords = ['학업/고시','연애','정신건강','가족', '대인관계', '직장', '금전', '사업', '이별', '이혼', '결혼', '육아', '성생활', '외모', 
+                  '취업/진로', '자아', '성격', 'LGBT', '건강', '중독', '집착', '불안', '자살생각', '자해', '스트레스', '공포증']; // Replace this with your actual keywords
 
-// Load tags from localStorage
-const savedTags = JSON.parse(localStorage.getItem('situation'));
+
+let situation = []; 
+
+let savedTags = [];
+
+if(localStorage.getItem('situation_u')) {
+  savedTags = JSON.parse(localStorage.getItem('situation_u'));
+
+
+}else{
+  savedTags = JSON.parse(localStorage.getItem('situation'));
+
+}
+
+
 if (savedTags) {
     situation = savedTags;
     situation.forEach(tag => {
@@ -33,8 +47,10 @@ if (savedTags) {
 
             // Update localStorage
             localStorage.setItem('situation', JSON.stringify(situation));
+            
         });
         tabpanel.appendChild(newTag);
+        localStorage.setItem('situation', JSON.stringify(situation));
     });
 }
 userinput.addEventListener('input', function() {

@@ -20,6 +20,7 @@
 <style>
 .main_body {
     display: flex;
+    
     justify-content: center;
     padding-top: 50px;
     background-color: #FAFAFA;
@@ -34,6 +35,7 @@
 .feed_box {
     background-color: white;
     width: 100%;
+
     margin-top: 15px;
     margin-bottom: 5px;
     min-height: auto;
@@ -48,7 +50,8 @@
 }
 
 .feed_content{
-  
+
+
     padding: 0px 10px;
 }
 
@@ -167,7 +170,9 @@
 
 }
 
-
+.dropdown-menu {
+  min-width: 3em !important;
+}
 
 </style>
 
@@ -214,19 +219,13 @@
         {% for keyword in record.keyword.split(',') %}
           #{{ keyword.strip() }}
         {% endfor %}
-
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-          </svg>
-        </div>
       </div>
       {% if record.image %}
       <img class="feed_img" src="../{{ record.image }}">
       {% endif %}
       
-      <div class="feed_content mt-3">
-        <p class="feed_txt"> 
+      <div class="feed_content mt-3 ">
+        <p class="feed_txt w-100"> 
           {{ record.content }}
         </p>
       </div>
@@ -234,7 +233,7 @@
       <div class="feed_icon">
         <div>
           <span class="material-icons-outlined">  <!-- 좋아요-->
-            favorite_border
+
           </span>
           <span id="sympathy-count" style=" font-size: 15px; margin-left: -8px;">{{ record.sympathy }}</span>
           <span class="material-icons-outlined"> <!-- 댓글 -->
@@ -259,6 +258,7 @@
       <div class="d-flex justify-content-center mb-5" >
         <div class="container-fluid row mt-2 mb-5" style="margin-left: 5px;" id="comment_main" >
 
+          
 
           
 
@@ -301,151 +301,10 @@
 </nav>
 
 
-<!-- Optional JavaScript; choose one of the two! -->
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
-
-<script>
-
-
-
-window.onload = function() {
-  let path = window.location.pathname; // "/community/5"
-  let parts = path.split('/'); // ["", "community", "5"]
-  let id = parts[parts.length - 1]; // "5"
-
-  fetch('/get-comments/' + id)
-    .then(response => response.json())
-    .then(data => {
-      let comment_main = document.getElementById('comment_main');
-      comment_main.innerHTML = '';
-
-      data.comments.forEach((comment, index) => {
-        let newCommentHTML = `
-    <div class="container-fluid row mt-2${index !== 0 ? ' border-top' : ''}">
-      <div class="col-2">
-          <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
-        </div>
-       <div class="col-10 mt-2">
-        <p>${comment.comment} </p> 
-        </div>
-      </div>
-        `;
-
-        comment_main.innerHTML += newCommentHTML;
-      }); 
-    });
-};
-
-
-  function getCookie(name) {
-  var cookieArr = document.cookie.split(";");
-
-  for(var i = 0; i < cookieArr.length; i++) {
-    var cookiePair = cookieArr[i].split("=");
-    
-    if(name == cookiePair[0].trim()) {
-      return decodeURIComponent(cookiePair[1]);
-    }
-  }
-
-  return null;
-}
-
-// 좋아요 클릭 이벤트 및 db 요청
-let path = window.location.pathname; // "/community/5"
-let parts = path.split('/'); // ["", "community", "5"]
-let id = parts[parts.length - 1]; // "5"
-
-let increment = true;
-document.querySelector('.material-icons-outlined').addEventListener('click', function() {
-  fetch('/update-sympathy', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': getCookie('csrf_access_token'),
-    },
-    body: JSON.stringify({ mr_id: id, increment: increment }) // replace `record.mr_id` with actual id
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      // Update the icon and sympathy count
-      this.textContent = data.sympathy > 0 ? 'favorite' : 'favorite_border';
-      document.getElementById('sympathy-count').textContent = data.sympathy;
-    }
-
-    // Toggle the increment value
-    increment = !increment;
-  });
-});
-
-
-
-// 댓글 작성
-
-document.querySelector('#comment input').addEventListener('keypress', function(e) {
-  // Check if the key pressed was 'Enter'
-  if (e.key === 'Enter') {
-    // Prevent form submission
-    e.preventDefault();
-
-    // Create new comment HTML
-    let newCommentHTML = `
-  <div class="container-fluid row mt-2">
-    <div class="col-2">
-      <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
-    </div>
-    <div class="col-10 mt-2">
-      <p>${this.value}</p> <!-- Use the input's current value -->
-    </div>
-  </div>
-  `;
-  let comment_main = document.getElementById('comment_main')
-  if (comment_main.childElementCount === 0) {
-    comment_main.innerHTML += newCommentHTML;
-  } else {
-    let newCommentHTML = `
-  <div class="container-fluid row mt-2 border-top">
-    <div class="col-2">
-      <img class="mt-2" style="margin-left: -20px; width: 40px;" src="../static/icon/캐릭터.png">
-    </div>
-    <div class="col-10 mt-2">
-      <p>${this.value}</p> <!-- Use the input's current value -->
-    </div>
-  </div>
-      `;
-  comment_main.innerHTML += newCommentHTML;
-  }
-    
-    //db에 댓글 저장
-    fetch('/add-comment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': getCookie('csrf_access_token'),
-      },
-      body: JSON.stringify({ mr_id:id, content: this.value }) 
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        // Update the comment count
-        document.getElementById('count').textContent = data.new_comment_count;
-      }
-    });
-
-    // Clear the input
-    this.value = '';
-  }
-
-
-});
-</script>
-
+<script src="../static/community_detail.js"></script>
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>

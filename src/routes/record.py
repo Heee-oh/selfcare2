@@ -4,6 +4,9 @@ from functools import wraps
 from flask import Blueprint, jsonify, redirect, render_template, make_response, Flask, session, request, url_for
 import pandas as pd
 import pymysql
+
+from .model_index import RecordModel,RecordData, CommentModel
+
 from .model_index import CommentModel, RecordModel,RecordData
 from flask_jwt_extended import jwt_required, get_jwt_identity, jwt_refresh_token_required
 from werkzeug.utils import secure_filename
@@ -61,7 +64,7 @@ def test6():
 
 
 
-
+# 게시글 저장
 @record.route('/save_data', methods=['POST'])
 @jwt_required
 def save_data():
@@ -103,14 +106,69 @@ def save_data():
 
     return jsonify({'message': 'Data saved successfully'}), 200
 
-
+# 게시글 삭제
 @record.route('/delete/<postId>', methods=['DELETE'])
 def delete_post(postId):
     record_model = RecordModel()
     Comment_Model = CommentModel()
-    Comment_Model.delete_comment(postId)
+    # Comment_Model.delete_comment(postId)
     record_model.delete_record(postId)
+
+
     return jsonify({'message': 'Data deleted successfully'}), 200
+
+
+
+@record.route('/update/<postId>', methods=['GET'])
+def update_post(postId):
+    record_model = RecordModel()
+    record = record_model.get_record(postId)
+    
+    
+    return jsonify(record=record.serialize())
+
+
+@record.route('/update-post', methods=['GET'])
+def update_upload():
+    return render_template('u_record_upload.html')
+
+@record.route('/update-post/<postId>', methods=['POST'])
+def update_post_upload(postId):
+    record_model = RecordModel()
+    data = request.get_json()
+    keywords = data.get('tags')
+    content = data.get('content')
+    situation = data.get('situation')
+    anonymous = data.get('anonymous')
+    image_data = data.get('imageData')
+    content_happy = data.get('contenthappy')
+
+    print(anonymous)
+        # 이미지 데이터를 파일로 저장
+    if image_data:
+        # Decode the image data
+        image_data = base64.b64decode(image_data.split(',')[1])
+        now = datetime.now()
+        formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
+        # Create a secure filename
+        filename = secure_filename(f'{postId}_{formatted_now}.png')
+
+        # Define the path to save the image
+        file_path = os.path.join('static', 'images', filename)
+
+        # Save the image data to a file
+        with open(file_path, 'wb') as f:
+            f.write(image_data)
+
+        # Update the image_data variable to the file path
+        image_data = file_path
+    
+    print(anonymous)
+    record_model.update_record(postId, content, keywords, situation, anonymous, image_data, content_happy)
+    return jsonify({'message': 'Data updated successfully'}), 200
+
+
+
 
 
 # @record.route('/save_data', methods=['POST'])
