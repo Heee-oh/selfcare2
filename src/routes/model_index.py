@@ -5,7 +5,7 @@ import jwt
 
 class RecordModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
         
     def insert_record(self, id, content, keywords, situationi, anonymous, image_data, content_happy):
         with self.db.cursor() as cursor:
@@ -151,7 +151,15 @@ class RecordModel:
             cursor.execute(sql, (content, situation, keywords_str, image_data, content_happy, open_close, mind_time,mr_id))
         self.db.commit()
     
-    
+        
+    # 년도, 달에 따른 게시물 가져오기
+    def get_records_by_month(self, year, month, user_id):
+        with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
+            sql = "SELECT * FROM mind_record WHERE YEAR(mind_time) = %s AND MONTH(mind_time) = %s AND id = %s"
+            cursor.execute(sql, (year, month, user_id))
+            records = cursor.fetchall()
+
+        return [RecordData(record) for record in records]
 
     # def serialize(self):
     #     return {
@@ -166,7 +174,7 @@ class RecordModel:
 
 class CommentModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
 
     def add_comment(self, post_user_id, mr_id, content):
         with self.db.cursor() as cursor:

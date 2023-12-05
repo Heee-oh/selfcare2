@@ -103,7 +103,7 @@ document.querySelector('.material-icons-outlined').addEventListener('click', asy
 
   isProcessing = true; // 처리 시작
 
-  update_like();
+  await update_like();
   
   fetch('/get_like', {
     method: 'POST',
@@ -130,7 +130,7 @@ document.querySelector('.material-icons-outlined').addEventListener('click', asy
 
 // 처음 좋아요 상태 조회 
 async function getFirstlike() {
-    fetch('/get_first_like', {
+    await fetch('/get_first_like', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ async function getFirstlike() {
 // 좋아요 업데이트
 async function update_like() {
   
-  fetch('/like', {
+  await fetch('/like', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

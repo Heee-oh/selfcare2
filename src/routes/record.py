@@ -167,7 +167,14 @@ def update_post_upload(postId):
     record_model.update_record(postId, content, keywords, situation, anonymous, image_data, content_happy)
     return jsonify({'message': 'Data updated successfully'}), 200
 
-
+@record.route('/calendar/<int:year>/<int:month>')
+@jwt_required
+def calendar(year, month):
+    record_data = RecordModel()
+    user_id = get_jwt_identity()
+    records = record_data.get_records_by_month(year, month, user_id)
+    record_objects = [record.serialize() for record in records]
+    return jsonify(records=record_objects)
 
 
 

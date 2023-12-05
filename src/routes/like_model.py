@@ -6,7 +6,7 @@ class LikeData:
     def __init__(self):
         self.db = pymysql.connect(host='localhost',
                                   user='root',
-                                  password='1234',
+                                  password='qhrwl123',
                                   db='test',
                                   charset='utf8')
 

@@ -5,7 +5,7 @@ const tabpanel = document.getElementById('tabpanel');
 window.onload = function() {
   const myanswer = document.querySelector('.myanswer p');
   const keywordsave = JSON.parse(localStorage.getItem('tags'));
-  alert(JSON.stringify(localStorage.getItem('tags')));
+  
   if (keywordsave) {
     myanswer.textContent = keywordsave.join(', ');
   }
