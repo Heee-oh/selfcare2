@@ -80,24 +80,24 @@ def save_data():
     anonymous = data.get('anonymous')
     image_data = data.get('imageData')
     content_happy = data.get('contenthappy')
-
+    
     # 이미지 데이터를 파일로 저장
     if image_data:
-        # Decode the image data
+
         image_data = base64.b64decode(image_data.split(',')[1])
         now = datetime.now()
         formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
-        # Create a secure filename
+
         filename = secure_filename(f'{user_id}_{formatted_now}.png')
 
-        # Define the path to save the image
+
         file_path = os.path.join('static', 'images', filename)
 
-        # Save the image data to a file
+
         with open(file_path, 'wb') as f:
             f.write(image_data)
 
-        # Update the image_data variable to the file path
+
         image_data = file_path
 
     record_model = RecordModel()
@@ -143,7 +143,7 @@ def update_post_upload(postId):
     image_data = data.get('imageData')
     content_happy = data.get('contenthappy')
 
-    print(anonymous)
+    
         # 이미지 데이터를 파일로 저장
     if image_data:
         # Decode the image data
@@ -163,11 +163,24 @@ def update_post_upload(postId):
         # Update the image_data variable to the file path
         image_data = file_path
     
-    print(anonymous)
+    
     record_model.update_record(postId, content, keywords, situation, anonymous, image_data, content_happy)
     return jsonify({'message': 'Data updated successfully'}), 200
 
 
+@record.route('/calendar/<int:year>/<int:month>')
+@jwt_required
+def calendar(year, month):
+    record_data = RecordModel()
+    user_id = get_jwt_identity()
+    records = record_data.get_records_by_month(year, month, user_id)
+    record_objects = [record.serialize() for record in records]
+    return jsonify(records=record_objects)
+
+
+@record.route('/calendar')
+def calender():
+    return render_template('calendar.html')
 
 
 

@@ -172,8 +172,9 @@ def logout():
     
 
 #
-
-
+@jwt.unauthorized_loader
+def missing_token_callback(error):
+    return render_template('401_error.html'), 401
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -48,7 +48,7 @@ class RecordModel:
 
     def get_all_records_open(self, page=1, per_page=10):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
-            sql = "SELECT * FROM mind_record WHERE open_close = 1 ORDER BY mr_id LIMIT %s OFFSET %s"
+            sql = "SELECT * FROM mind_record WHERE open_close = 1 ORDER BY mr_id DESC LIMIT %s OFFSET %s"
             cursor.execute(sql, (per_page, (page - 1) * per_page))
             records = cursor.fetchall()
 
@@ -78,6 +78,9 @@ class RecordModel:
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
+    
+
+    
         
     # def get_my_today_records(self):
     #     with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
@@ -151,7 +154,14 @@ class RecordModel:
             cursor.execute(sql, (content, situation, keywords_str, image_data, content_happy, open_close, mind_time,mr_id))
         self.db.commit()
     
-    
+    # 년도, 달에 따른 게시물 가져오기
+    def get_records_by_month(self, year, month, user_id):
+        with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
+            sql = "SELECT * FROM mind_record WHERE YEAR(mind_time) = %s AND MONTH(mind_time) = %s AND id = %s"
+            cursor.execute(sql, (year, month, user_id))
+            records = cursor.fetchall()
+
+        return [RecordData(record) for record in records]
 
     # def serialize(self):
     #     return {

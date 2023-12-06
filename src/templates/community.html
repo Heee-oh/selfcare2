@@ -33,7 +33,7 @@
       <a class="navbar-brand" href="#">
         <img src="../static/icon/알람.png">
       </a>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" onclick="stopword()">
         <img src="../static/icon/설정.png">
       </a>
     </div>
@@ -46,8 +46,38 @@
 
 <!-- 바디 영역 -->
 <div class="container-fluid main_body">
-  <div class="left_body mt-4" id="list">
 
+
+
+
+  </div>
+  
+
+  <div class="left_body mt-4" id="list">
+    <div class="modal fade" id="keywordModal" tabindex="-1" role="dialog" aria-labelledby="keywordModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <h5 class="modal-title" id="keywordModalLabel">필터링 키워드 입력</h5>
+  
+          </div>
+          <div class="modal-body">
+            <div id="autocomplete-container">
+              <div id="tabpanel"></div>
+              <div id="autocomplete"></div>
+            </div>
+  
+  
+            <input type="text" id="contentA" class="form-control" placeholder="학업/고시">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_modal">Close</button>
+            <button type="button" class="btn btn-primary" id="applyKeyword">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--이미지가 없을 경우 -->
     <div class="border feed_box positio" id="post">
 
@@ -91,6 +121,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="../static/community.js"></script>
 <!-- Option 2: Separate Popper and Bootstrap JS -->

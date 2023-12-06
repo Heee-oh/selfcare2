@@ -13,7 +13,7 @@
 
 .feed_box {
     background-color: white;
-    width: 100%;
+    width: 95%;
     margin-top: 15px;
     margin-bottom: 5px;
     min-height: auto;
@@ -159,3 +159,32 @@
   top: 0;
   width: 100%;  
 }
+
+
+
+#autocomplete {
+
+
+margin-top: 20px;
+margin-bottom: 20px;
+width: 100%; /* Ensure the autocomplete spans the full width */
+background-color: #cccccc;
+}
+
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 4px;
+  
+  background-color: transparent;
+  border: 1px solid #7777c1; /* Adjust as needed */
+  border-radius: 50px; /* Adjust as needed */
+  font-size: 0.875em;
+  color: #495057;
+  
+  }
+
+  .tag:hover {
+  background-color: #7777c1; /* Adjust as needed */
+  }

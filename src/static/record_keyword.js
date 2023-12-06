@@ -16,9 +16,13 @@ let savedTags = [];
 
 if(localStorage.getItem('tags_u')) {
   savedTags = JSON.parse(localStorage.getItem('tags_u'));
+  localStorage.removeItem('tags_u');
+  
+  
   
 }else{
   savedTags = JSON.parse(localStorage.getItem('tags'));
+  
 
 }
 
