@@ -194,3 +194,8 @@ hr.my-4 {
   padding: 20px;
   display: none;
 }
+.custom-border{
+  border: 10px solid #00A8BA;
+  border-radius: 5px;
+
+}

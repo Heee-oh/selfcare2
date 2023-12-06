@@ -51,10 +51,6 @@ function fetchQuestion(questionId) {
     }
 }
 
-function gohome() {
-  if ()
-}
-
 function goToNextQuestion() {
 if (currentQuestion < totalQuestions) {
   currentQuestion++;
