@@ -3,48 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grid Example</title>
+  <title>토닥</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link href="../static/css/record_simple.css" rel="stylesheet">
-  <style>
 
-  #tabpanel {
-  position: absolute;
-  bottom: 140px; /* Adjust as needed */
-  width: 100%; /* Ensure the tabpanel spans the full width */
-}
-
-#autocomplete {
-  position: absolute;
-  bottom: 140px; /* Adjust as needed */
-  margin-top: 20px;
-  
-  width: 100%; /* Ensure the autocomplete spans the full width */
-  background-color: #cccccc;
-}
-
-.bottom {
-  height: 80px; 
-  border-top: 1px solid #000; 
-}
-
-.tag {
-    display: inline-block;
-    padding: 2px 8px;
-    margin: 4px;
-    
-    background-color: transparent;
-    border: 1px solid #7777c1; /* Adjust as needed */
-    border-radius: 50px; /* Adjust as needed */
-    font-size: 0.875em;
-    color: #495057;
-    
-    }
-
-    .tag:hover {
-    background-color: #7777c1; /* Adjust as needed */
-    }
-  </style>
 </head>
 <body>
 
@@ -69,7 +31,7 @@
     </div>
     <div class="container white-bg speech-bubble question">
       <p style="font-size: 13px;">
-        오늘 하루 느낀 감정을 5개 이하로 적어줘.
+        오늘 하루 느낀 감정을 5개 이하로 <br> 적어줘.
       </p>
     </div>
 
@@ -87,7 +49,7 @@
       </div>
       <div class="container white-bg speech-bubble question2">
         <p style="font-size: 13px;">
-          그런 감정을 느꼈구나... 그 감정의 원인을 3개 이하로 알려줘.
+          그런 감정을 느꼈구나... <br>그 감정의 원인을 3개 이하로 알려줘.
         </p>
       </div>
     </div>
@@ -111,27 +73,25 @@
   </div>
   
   <!-- 입력 창 -->
-  <div class="container">
-
-  
-    <nav class="navbar fixed-bottom bottom">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/test1">
-          <img src="../static/icon/record.png">
-      </a>
-      <a class="navbar-brand" href="/community">
-        <img src="../static/icon/커뮤니티.png">
-  
-      </a>
-      <a class="navbar-brand" href="#">
-        <img src="../static/icon/도움닫기.png">
-      </a>
-      <a class="navbar-brand" href="/">
-        <img src="../static/icon/마이.png">
-      </a>
+  <nav class="navbar fixed-bottom bottom">
+    <div class="container-fluid">
+      
+      <a class="navbar-brand mx-3" href="/test1">
+        <img src="../static/icon/기록1.png">
         
+    </a>
+    <a class="navbar-brand" href="/community">
+      <img src="../static/icon/커뮤니티.png">
 
-  </div>
+    </a>
+    <a class="navbar-brand" href="#">
+      <img src="../static/icon/도움닫기.png">
+    </a>
+    <a class="navbar-brand" href="/" style="margin-right: 25px;">
+      <img src="../static/icon/마이.png">
+    </a>
+      
+    </div>
  
       
 

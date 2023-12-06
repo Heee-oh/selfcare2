@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+  *{
+    font-family: 'Noto Sans KR', sans-serif !important;
+
+  }
+
 .main_body {
     display: flex;
     justify-content: center;
@@ -131,8 +138,9 @@
 }
 
 .top {
-  background-color: whitesmoke;
+  background-color: white;
   height: 80px;
+  border-bottom: 1px solid #E7E7E7; 
   }
 
   .top p {
@@ -141,9 +149,10 @@
   }
 
   .bottom {
+  border-top: 1px solid #E7E7E7; 
   height: 80px; 
-
-  background-color: whitesmoke;
+  background-color: white;
+  
 }
 
 .bi-three-dots {
@@ -153,6 +162,7 @@
 
 .tag_size {
   font-size: 12px;
+  color: #00A8BA;
 }
 #post {
   position: fixed;
@@ -168,8 +178,14 @@
 margin-top: 20px;
 margin-bottom: 20px;
 width: 100%; /* Ensure the autocomplete spans the full width */
-background-color: #cccccc;
+background-color: #EAEAEA;
 }
+#autocomplete div {
+  
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
 
 
 .tag {
@@ -178,7 +194,7 @@ background-color: #cccccc;
   margin: 4px;
   
   background-color: transparent;
-  border: 1px solid #7777c1; /* Adjust as needed */
+  border: 1px solid #00A8BA; /* Adjust as needed */
   border-radius: 50px; /* Adjust as needed */
   font-size: 0.875em;
   color: #495057;

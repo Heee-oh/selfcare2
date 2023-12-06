@@ -1,7 +1,8 @@
+
 .top {
-    position: relative;
-    height: 50px; 
-    border-bottom: 1px solid #000; 
+  position: relative;
+  height: 80px; 
+  border-bottom: 1px solid #E7E7E7; 
   }
   .top a {
     text-align: center;
@@ -52,7 +53,7 @@
   background-color: #c2acac;
   border-radius: 50%;
   position: absolute;
-  top: calc(12% - 25px); /* Adjust as needed */
+  top: calc(18% - 20px); /* Adjust as needed */
   left: 10%;
   transform: translateX(-50%);
 }
@@ -60,7 +61,7 @@
 .question{
     position: relative;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    
     
     left: 15%;
     border-radius: 10px;
@@ -72,7 +73,7 @@
   .question2 {
     position: relative;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    
 
     left: 15%;
     border-radius: 10px;
@@ -153,6 +154,6 @@
   
   }
   .bottom {
-  height: 80px; 
-  border-top: 1px solid #000; 
+  height: 100px; 
+  
 }

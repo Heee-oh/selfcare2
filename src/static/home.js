@@ -17,7 +17,12 @@ var date = new Date();
 var dayName = days[date.getDay()];
 var day = date.getDate();
 var month = date.getMonth() + 1; // JavaScript counts months from 0 to 11
-document.getElementById('date').innerHTML = month + '월 ' + day + '일 ' + dayName;
+document.getElementById('date').innerHTML = month + '월 ' + day + '일 ' + dayName +
+
+`<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" > 
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.83274 0.351148L9.25879 3.9674C9.28962 3.99992 9.31023 4.04076 9.31809 4.08488C9.32595 4.12899 9.3207 4.17444 9.303 4.21561C9.28529 4.25677 9.25591 4.29184 9.21848 4.31648C9.18105 4.34112 9.13722 4.35424 9.09241 4.35423H1.90758C1.86277 4.35424 1.81894 4.34112 1.78151 4.31648C1.74408 4.29184 1.71469 4.25677 1.69699 4.21561C1.67929 4.17444 1.67404 4.12899 1.6819 4.08488C1.68975 4.04076 1.71037 3.99992 1.7412 3.9674L5.16724 0.351148C5.21007 0.305933 5.26167 0.269921 5.31888 0.245311C5.37609 0.2207 5.43772 0.208008 5.49999 0.208008C5.56227 0.208008 5.6239 0.2207 5.68111 0.245311C5.73832 0.269921 5.78992 0.305933 5.83274 0.351148ZM5.83274 10.649L9.25879 7.03273C9.28962 7.00021 9.31023 6.95937 9.31809 6.91525C9.32595 6.87114 9.3207 6.82569 9.303 6.78452C9.28529 6.74336 9.25591 6.70829 9.21848 6.68365C9.18105 6.65901 9.13722 6.64588 9.09241 6.6459H1.90758C1.86277 6.64588 1.81894 6.65901 1.78151 6.68365C1.74408 6.70829 1.71469 6.74336 1.69699 6.78452C1.67929 6.82569 1.67404 6.87114 1.6819 6.91525C1.68975 6.95937 1.71037 7.00021 1.7412 7.03273L5.16724 10.649C5.21007 10.6942 5.26167 10.7302 5.31888 10.7548C5.37609 10.7794 5.43772 10.7921 5.49999 10.7921C5.56227 10.7921 5.6239 10.7794 5.68111 10.7548C5.73832 10.7302 5.78992 10.6942 5.83274 10.649Z" fill="black"/>
+</svg> `
+;
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -79,68 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   document.getElementById('delete-post').addEventListener('click', function(e) {
-//     e.preventDefault();
-//     var postId = this.closest('.feed_box').id; // Get the ID of the post
-//     fetch('/delete/' + postId, { // Update this URL with your delete route
-//       method: 'DELETE',
-//     })
-//     .then(console.log(postId))
-//     .then(response => response.json())
-//     .then(data => {
-//     // Remove the post from the DOM
-//       document.getElementById(postId).remove();
-//       window.location.reload();
-//       document.getElementById('today_log').style.display = 'block';
-//     });
-//   });
-
-
-//   // 업데이트 버튼 누르면 update/해당글 mr_id 로 이동
-//   document.getElementById('update-post').addEventListener('click', function(e) {
-//     e.preventDefault();
-//     fetch('/update/' + this.closest('.feed_box').id, {
-//         method: 'GET',
-//       })
-//       .then(response => response.json())
-//       .then(data => {
-//            // data.mr_id xx
-//            // 왜 data.record.mr_id로 접근해야하는지 의문? 
-//            // record라는 키와 record.serialize()의 결과로 얻은 객체 이기 때문에
-//            // data.record를 사용해서 record 속성에 접근 한다음 mr_id에 접근해야함!
-
-
-//            let keywordArray;
-//            let situationArray;
-
-//            keywordArray = data.record.keyword.split(',');
-         
-
-//            situationArray = data.record.situation.split(',');
-
-      
-//         localStorage.setItem('mr_id_u', data.record.mr_id);
-//         localStorage.setItem('situation_u', JSON.stringify(situationArray));
-//         localStorage.setItem('tags_u', JSON.stringify(keywordArray));
-//         localStorage.setItem('content_u', data.record.content);
-//         localStorage.setItem('contenthappy_u', data.record.happy);
-//         localStorage.setItem('imageData_u', data.record.image);
-//         localStorage.setItem('anonymous_u', data.record.open_close);
-      
-
-//         window.location.href = '/test1';
-//       })
-//       .catch(error => {
-//           console.error('Error:', error);
-//       });
-
-//     });
-
-  
-
-
-// });
 
 
 document.querySelectorAll('.btn:not(.close)').forEach(function(button) {
