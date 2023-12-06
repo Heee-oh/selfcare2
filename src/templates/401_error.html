@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인증되지 않은 사용자</title>
+</head>
+<body>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: '로그인 필요',
+            text: '로그인 페이지로 이동합니다.',
+        }).then(function() {
+            window.location.href = "/";
+        });
+
+    </script>
+</body>
+</html>

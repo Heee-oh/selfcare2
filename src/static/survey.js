@@ -43,13 +43,17 @@ function fetchQuestion(questionId) {
     } else {
         sendDataBtn.style.display = 'none'; // 다른 질문일 때 Send Data 버튼 숨김
 
-        // 아니오, 가끔, 자주 버튼 보이기
+        // 질문버튼 숨김
         if (scoreButtons) {
             scoreButtons.style.display = 'block';
         }
+
     }
 }
 
+function gohome() {
+  if ()
+}
 
 function goToNextQuestion() {
 if (currentQuestion < totalQuestions) {

@@ -93,11 +93,7 @@ async function fetchPosts() {
 
           
 
-          if (postsContainer.firstChild) {
-            postsContainer.insertBefore(post, postsContainer.firstChild);
-          } else {
-            postsContainer.appendChild(post);
-          }
+          postsContainer.appendChild(post);
     });
 
         var ad = document.createElement('div');

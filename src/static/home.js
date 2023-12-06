@@ -374,3 +374,17 @@ const myJson = await response.json();
 console.log(myJson);
 return myJson;
 }
+
+
+function record_move() {
+  
+  localStorage.removeItem('mr_id');
+  localStorage.removeItem('situation');
+  localStorage.removeItem('tags');
+  localStorage.removeItem('content');
+  localStorage.removeItem('contenthappy');
+  localStorage.removeItem('imageData');
+  localStorage.removeItem('anonymous');
+
+  window.location.href = '/test1';
+}

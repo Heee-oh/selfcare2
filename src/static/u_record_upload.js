@@ -61,7 +61,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
     'anonymous': anonymous,
     'imageData': imageData
   };
-
+  document.getElementById('loading').classList.remove('display_none');
   $.ajax({
     url: '/update-post/' + localStorage.getItem('mr_id_u'),
     method: 'POST',
@@ -85,12 +85,13 @@ document.getElementById('an_post').addEventListener('click', function(event) {
       localStorage.removeItem('contenthappy_u');
       localStorage.removeItem('imageData_u');
       localStorage.removeItem('anonymous_u');
-
+      document.getElementById('loading').classList.add('display_none');
       Swal.fire({
         icon: 'success',
         title: '수정 완료',
         text: '성공적으로 수정했습니다.',
         willClose: function() {
+          
           window.location.href = '/test';
         }
       })
@@ -98,6 +99,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
     },
     error: function(error) {
       console.error('Error:', error);
+      document.getElementById('loading').classList.add('display_none');
     }
   });
 });
@@ -133,7 +135,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
     'anonymous': anonymous,
     'imageData': imageData
   };
-
+  document.getElementById('loading').classList.remove('display_none');
   $.ajax({
     url: '/update-post/' + localStorage.getItem('mr_id_u'),
     method: 'POST',
@@ -158,7 +160,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
       localStorage.removeItem('imageData_u');
       localStorage.removeItem('anonymous_u');
     
-      
+      document.getElementById('loading').classList.add('display_none');
       Swal.fire({
         icon: 'success',
         title: '수정 완료',
@@ -171,6 +173,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
     },
     error: function(error) {
       console.error('Error:', error);
+      document.getElementById('loading').classList.add('display_none');
     }
   });
 });

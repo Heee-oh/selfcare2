@@ -48,11 +48,12 @@ class RecordModel:
 
     def get_all_records_open(self, page=1, per_page=10):
         with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
-            sql = "SELECT * FROM mind_record WHERE open_close = 1 ORDER BY mr_id LIMIT %s OFFSET %s"
+            sql = "SELECT * FROM mind_record WHERE open_close = 1 ORDER BY mr_id DESC LIMIT %s OFFSET %s"
             cursor.execute(sql, (per_page, (page - 1) * per_page))
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
+
 
 
     def get_all_records(self):

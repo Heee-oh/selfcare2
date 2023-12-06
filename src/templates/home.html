@@ -355,38 +355,41 @@ td {
     </div>
   </div>
 
-{% if record is not none %}
-
-<div class="border feed_box" id="{{ record.mr_id }}">
-  <div class="feed_name d-flex justify-content-between">
-    <p class="tag_size">
-      {% for situation in record.situation.split(',') %}
-      #{{ situation.strip() }}
-      {% endfor %}
-      {% for keyword in record.keyword.split(',') %}
-        #{{ keyword.strip() }}
-      {% endfor %}
-    </p>
-
+  {% if record is not none %}
+  <div class="border feed_box" id="{{ record.mr_id }}">
+    <div class="feed_name d-flex justify-content-between">
+      <p class="tag_size">
+        {% for situation in record.situation.split(',') %}
+        #{{ situation.strip() }}
+        {% endfor %}
+        {% for keyword in record.keyword.split(',') %}
+          #{{ keyword.strip() }}
+        {% endfor %}
+      </p>
+  
       <div class="dropdown">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
         </svg>
+  
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" id="update-post">수정</a>
           <a class="dropdown-item" id="delete-post">삭제</a>
         </div>
       </div>
-
+    </div>
+    <div class="feed_content mt-3 d-flex">
+      {% if record.image %}
+      <img class="feed_img" src="../{{ record.image }}" style="width: 100px; height: auto;">
+      {% endif %}
+      <div>
+        <p class="feed_txt" style="margin-left: 5px;">{{ record.content }}</p>
+        <p class="feed_txt" style="margin-left: 5px;">{{ record.happy }}</p>
+      </div>
+    </div>
   </div>
-  <div class="feed_content mt-3">
-      <p class="feed_txt" style="margin-left: 5px;">{{ record.content }}</p>
-      <p class="feed_txt" style="margin-left: 5px;">{{ record.happy }}</p>
-  </div>
-
-</div>
 {% else %}
-<div class="container-fluid" onclick="window.location.href='/test1'" id="today_log">
+<div class="container-fluid" onclick="record_move()" id="today_log">
   <div class="rounded-box">
       <img src="../static/icon/플러스.png" class="plus" >
   </div>
@@ -395,7 +398,20 @@ td {
 {% endif %}
 
 
-
+<div class="row mx-1">
+  <div class="col-sm-3 mb-2">
+      <a href='/survey' class="btn btn-secondary btn-block">설문조사(번아웃 증후군)</a>
+  </div>
+  <div class="col-sm-3 mb-2">
+      <a href='/survey_stress' class="btn btn-secondary btn-block">설문조사(외상 후 스트레스)</a>
+  </div>
+  <div class="col-sm-3 mb-2">
+      <a href='/survey_relation' class="btn btn-secondary btn-block">설문조사(관계중독)</a>
+  </div>
+  <div class="col-sm-3 mb-2">
+      <a href='/survey_new' class="btn btn-secondary btn-block">설문조사(새로운 주제)</a>
+  </div>
+</div>
 
 
 <div id="top10">오늘의 TOP10 기록 

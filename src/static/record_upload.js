@@ -61,7 +61,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
     'anonymous': anonymous,
     'imageData': imageData
   };
-
+  document.getElementById('loading').classList.remove('display_none');
   $.ajax({
     url: '/save_data',
     method: 'POST',
@@ -77,7 +77,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
       localStorage.removeItem('tags');
       localStorage.removeItem('content');
       localStorage.removeItem('contenthappy');
-
+      document.getElementById('loading').classList.add('display_none');
       Swal.fire({
         icon: 'success',
         title: '작성 완료',
@@ -90,6 +90,7 @@ document.getElementById('an_post').addEventListener('click', function(event) {
     },
     error: function(error) {
       console.error('Error:', error);
+      document.getElementById('loading').classList.add('display_none');
     }
   });
 });
@@ -125,7 +126,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
     'anonymous': anonymous,
     'imageData': imageData
   };
-
+  document.getElementById('loading').classList.remove('display_none');
   $.ajax({
     url: '/save_data',
     method: 'POST',
@@ -141,7 +142,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
       localStorage.removeItem('tags');
       localStorage.removeItem('content');
       localStorage.removeItem('contenthappy');
-      
+      document.getElementById('loading').classList.add('display_none');
       Swal.fire({
         icon: 'success',
         title: '작성 완료',
@@ -154,6 +155,7 @@ document.getElementById('upload_community').addEventListener('click', function(e
     },
     error: function(error) {
       console.error('Error:', error);
+      document.getElementById('loading').classList.add('display_none');
     }
   });
 });
