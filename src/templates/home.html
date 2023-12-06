@@ -10,9 +10,12 @@
 
     <style>
 
-@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+  *{
+    font-family: 'Noto Sans KR', sans-serif !important;
 
+  }
 .calendar_box {
     background-color : white;
     height: auto;
@@ -82,13 +85,13 @@ td {
     font-weight: 600;
     cursor: pointer;
 }
-      .bottom {
+  .bottom {
   height: 80px; 
-  border-top: 1px solid #000; 
+  border-top: 1px solid #E7E7E7; 
 }
   .top {
     height: 50px; 
-    border-bottom: 1px solid #000; 
+    border-bottom: 1px solid #E7E7E7; 
   }
   .top a {
     text-align: center;
@@ -96,7 +99,11 @@ td {
 
   #date {
     margin-top: 100px; 
-}
+    margin-left: 10.16px;
+    font-size: 16pt;
+    font-weight: 500;
+  }
+
 .rounded-box {
     position: relative;
     width: 95%; 
@@ -116,9 +123,10 @@ td {
 }
 
 #top10 {
+   font-size: 16pt;
     flex-direction: row; 
     align-items: center;
-    margin-left: 30px;
+    margin-left: 22.16px;
     margin-top: 20px; /* Adjust as needed */
     margin-bottom: 1px; /* Adjust as needed */
 }
@@ -130,16 +138,22 @@ td {
 }
 
 .card {
+    border-color: #E7E7E7;
+    border-width: 2pt;
     margin-top: 20px;
     margin-left: 20px;
+    border-radius: 15px;
 }
+
 
 
 
 .feed_box {
     background-color: white;
-    width: 95%;
-    margin-left: 2.5%;
+    border-color: #E7E7E7 !important;
+    border-width: 2pt !important;
+    width: 90%;
+    margin-left: 5%;
     margin-top: 15px;
     margin-bottom: 5px;
     min-height: auto;
@@ -257,7 +271,7 @@ td {
 }
 
 .top {
-  background-color: whitesmoke;
+
   height: 80px;
   }
 
@@ -267,9 +281,8 @@ td {
   }
 
   .bottom {
-  height: 80px; 
+  height: 100px; 
 
-  background-color: whitesmoke;
 }
 
 .bi-three-dots {
@@ -278,10 +291,21 @@ td {
 }
 
 .tag_size {
-  font-size: 12px;
+  
+  color: #00A8BA;
+  font-size: 15px;
   margin-left: 5px;
 }
 
+.tag{
+  
+  font-size: 12pt;
+  color: #00A8BA;
+}
+
+.card-text {
+  font-size: 12pt;
+}
 
 </style>
 </head>
@@ -289,7 +313,7 @@ td {
   
   <nav class="navbar fixed-top top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/test">기록</a>
+      <img src="../static/icon/홈로고.png" class="navbar-brand" onclick="window.location.reload()" style="width: 28px; height: auto;" ></a>
 
 
       <div class="ms-auto"> 
@@ -308,7 +332,12 @@ td {
   </nav>
 
   <div class="container-fluid">
-    <h5 id="date"></h5>
+
+    <p id="date">
+      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:100px;"> 
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.83274 0.351148L9.25879 3.9674C9.28962 3.99992 9.31023 4.04076 9.31809 4.08488C9.32595 4.12899 9.3207 4.17444 9.303 4.21561C9.28529 4.25677 9.25591 4.29184 9.21848 4.31648C9.18105 4.34112 9.13722 4.35424 9.09241 4.35423H1.90758C1.86277 4.35424 1.81894 4.34112 1.78151 4.31648C1.74408 4.29184 1.71469 4.25677 1.69699 4.21561C1.67929 4.17444 1.67404 4.12899 1.6819 4.08488C1.68975 4.04076 1.71037 3.99992 1.7412 3.9674L5.16724 0.351148C5.21007 0.305933 5.26167 0.269921 5.31888 0.245311C5.37609 0.2207 5.43772 0.208008 5.49999 0.208008C5.56227 0.208008 5.6239 0.2207 5.68111 0.245311C5.73832 0.269921 5.78992 0.305933 5.83274 0.351148ZM5.83274 10.649L9.25879 7.03273C9.28962 7.00021 9.31023 6.95937 9.31809 6.91525C9.32595 6.87114 9.3207 6.82569 9.303 6.78452C9.28529 6.74336 9.25591 6.70829 9.21848 6.68365C9.18105 6.65901 9.13722 6.64588 9.09241 6.6459H1.90758C1.86277 6.64588 1.81894 6.65901 1.78151 6.68365C1.74408 6.70829 1.71469 6.74336 1.69699 6.78452C1.67929 6.82569 1.67404 6.87114 1.6819 6.91525C1.68975 6.95937 1.71037 7.00021 1.7412 7.03273L5.16724 10.649C5.21007 10.6942 5.26167 10.7302 5.31888 10.7548C5.37609 10.7794 5.43772 10.7921 5.49999 10.7921C5.56227 10.7921 5.6239 10.7794 5.68111 10.7548C5.73832 10.7302 5.78992 10.6942 5.83274 10.649Z" fill="black"/>
+        </svg> 
+    <p>
   </div>
 
 <!-- 캘린더 띄울 자리-->  
@@ -358,14 +387,14 @@ td {
   {% if record is not none %}
   <div class="border feed_box" id="{{ record.mr_id }}">
     <div class="feed_name d-flex justify-content-between">
-      <p class="tag_size">
+      <h6 class="tag_size">
         {% for situation in record.situation.split(',') %}
         #{{ situation.strip() }}
         {% endfor %}
         {% for keyword in record.keyword.split(',') %}
           #{{ keyword.strip() }}
         {% endfor %}
-      </p>
+      </h6>
   
       <div class="dropdown">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -391,7 +420,7 @@ td {
 {% else %}
 <div class="container-fluid" onclick="record_move()" id="today_log">
   <div class="rounded-box">
-      <img src="../static/icon/플러스.png" class="plus" >
+      <img src="../static/icon/글쓰기.png" class="plus" >
   </div>
 </div>
 
@@ -414,7 +443,7 @@ td {
 </div>
 
 
-<div id="top10">오늘의 TOP10 기록 
+<div id="top10">오늘 많이 공감받은 기록
 
 </div> 
 
@@ -436,50 +465,25 @@ td {
       <div class="swiper-slide" id="{{record_top.mr_id }}">
         <div class="card" style="width: 25rem; max-width: 25rem; max-height: 50rem; overflow: auto;" id="{{ record_top.mr_id }}">
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-body-secondary">
+            <h6 class="card-subtitle mb-2 tag">
               {% for situation in record_top.situation.split(',') %}
               #{{ situation.strip() }}
               {% endfor %}
 
             </h6>
             <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">{{ record_top.content }}</p>
-            <button class="btn btn-bg-success border" id="{{ record_top.mr_id }}" >기록 더 자세히 보기 </button>
+            <div style="height: 20px;">
+
+            </div>
+            <button class="btn btn-bg-success mt-1" id="{{ record_top.mr_id }}" >기록 더 자세히 보기 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.39074 12.5625C5.17512 12.5625 4.95949 12.4781 4.79074 12.3188C4.63331 12.1606 4.54492 11.9466 4.54492 11.7235C4.54492 11.5003 4.63331 11.2863 4.79074 11.1281L8.41887 7.50002L4.79074 3.88127C4.63331 3.72315 4.54492 3.5091 4.54492 3.28596C4.54492 3.06282 4.63331 2.84877 4.79074 2.69065C4.94887 2.53321 5.16292 2.44482 5.38606 2.44482C5.60919 2.44482 5.82324 2.53321 5.98137 2.69065L10.2001 6.9094C10.3576 7.06752 10.4459 7.28157 10.4459 7.50471C10.4459 7.72785 10.3576 7.9419 10.2001 8.10002L5.98137 12.3188C5.82199 12.4781 5.60637 12.5625 5.39074 12.5625Z" fill="#1E1E1E" fill-opacity="0.5"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
       {% endfor %}
 
-      <!-- <div class="swiper-slide">
-
-        <div class="card" style="width: 25rem; max-width: 25rem; max-height: 50rem; overflow: auto;">
-          <div class="card-body">
-            <h5 class="card-title">제목</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">태그</h6>
-            <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.</p>
-            <a class="card-link">기록 더 자세히 보기 </a>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">  
-        <div class="card" style="width: 25rem; max-width: 25rem; max-height: 50rem; overflow: auto;">
-        <div class="card-body">
-          <h5 class="card-title">제목</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">태그</h6>
-          <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.</p>
-          <a class="card-link">기록 더 자세히 보기 </a>
-        </div>
-        </div>
-      </div>
-      <div class="swiper-slide">  
-        <div class="card" style="width: 25rem; max-width: 25rem; max-height: 50rem; overflow: auto;">
-        <div class="card-body">
-          <h5 class="card-title">제목</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">태그</h6>
-          <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.안녕하세요 기록입니다. 기록이기 때문입니다.</p>
-          <a class="card-link">기록 더 자세히 보기 </a>
-        </div>
-        </div>
-      </div> -->
     </div>
     <div style="margin-top: 40px;"></div>
     <div class="swiper-pagination"></div>
@@ -491,8 +495,10 @@ td {
 
   <nav class="navbar fixed-bottom bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/test1">
-        <img src="../static/icon/record.png">
+      
+      <a class="navbar-brand mx-3" href="/test1">
+        <img src="../static/icon/기록1.png">
+        
     </a>
     <a class="navbar-brand" href="/community">
       <img src="../static/icon/커뮤니티.png">
@@ -501,11 +507,11 @@ td {
     <a class="navbar-brand" href="#">
       <img src="../static/icon/도움닫기.png">
     </a>
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/" style="margin-right: 25px;">
       <img src="../static/icon/마이.png">
     </a>
       
-      
+    </div>
 
   </nav>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

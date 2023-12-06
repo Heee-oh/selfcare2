@@ -1,6 +1,14 @@
-.top {
-    height: 50px; 
-    border-bottom: 1px solid #000; 
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+  *{
+    font-family: 'Noto Sans KR', sans-serif !important;
+
+  }
+
+  .top {
+    position: relative;
+    height: 80px; 
+    border-bottom: 1px solid #E7E7E7; 
   }
   .top a {
     text-align: center;
@@ -13,17 +21,7 @@
       background-color: #ffffff;
       padding: 20px;
     }
-    /* 
-    .image-box {
-      width: 100px; 
-      height: 100px; 
-      background-color: #cccccc; 
-      border: 1px solid #000000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto; 
-    } */
+
 
     .bottom-content {
 
@@ -41,7 +39,7 @@
     }
 
     .custom-div {
-    height: 250px; /* Adjust as needed */
+    height: 250px; 
   
     }
 
@@ -51,7 +49,7 @@
   background-color: #c2acac;
   border-radius: 50%;
   position: absolute;
-  top: calc(12% - 25px); /* Adjust as needed */
+  top: calc(15% - 25px); /* Adjust as needed */
   left: 10%;
   transform: translateX(-50%);
 }
@@ -61,8 +59,8 @@
 .question{
     position: absolute;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    top: calc(10% - 30px); /* Adjust as needed */
+    
+    top: calc(13% - 30px); /* Adjust as needed */
     left: 15%;
     border-radius: 10px;
     padding: 10px;
@@ -72,7 +70,7 @@
   .question2 {
     position: absolute;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    
     top: calc(23% - 50px); /* Adjust as needed */
     left: 15%;
     border-radius: 10px;
@@ -153,6 +151,6 @@
   
   }
   .bottom {
-  height: 80px; 
-  border-top: 1px solid #000; 
+  height: 100px; 
+  
 }

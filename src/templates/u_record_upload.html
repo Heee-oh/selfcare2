@@ -50,9 +50,9 @@
   position: relative;
   width: 32px;
   height: 32px;
-  border-top: 4px solid #FFDE02;
-  border-right: 4px solid #FFDE02;
-  border-bottom: 4px solid #FFDE02;
+  border-top: 4px solid #00A8BA;
+  border-right: 4px solid #00A8BA;
+  border-bottom: 4px solid #00A8BA;
   border-left: 4px solid rgba(0,0,0,0);
   border-radius: 45px;
   z-index: 11;
@@ -76,7 +76,7 @@ display: none !important;
 
   
   <!-- 네비게이션 -->
-  <nav class="navbar fixed-top bg-body-tertiary">
+  <nav class="navbar fixed-top ">
     <div class="container-fluid">
 
     </div>
@@ -111,7 +111,7 @@ display: none !important;
           <img src="../static/icon/이미지업로드.png" id="ma">
         </label>
         <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-        <div class="overlay-text">이미지 업로드</div>
+        
       </div>
     </div>
     <div class="bg-subtle text-emphasis-dark ">
@@ -121,7 +121,7 @@ display: none !important;
         </p>
         <div class="image-container">
           <img src="../static/icon/커뮤니티업로드.png" id="upload_community">
-          <div class="overlay-text">커뮤니티에 기록 게시하기</div>
+          
         </div>
   
       </div>
@@ -149,30 +149,25 @@ display: none !important;
 
   </div>
   
-  <!-- 입력 창 -->
-  <div class="container">
-
-  
-    <nav class="navbar fixed-bottom bottom">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/test">
-          <img src="../static/icon/record.png">
-      </a>
-      <a class="navbar-brand" href="/community">
-        <img src="../static/icon/커뮤니티.png">
-  
-      </a>
-      <a class="navbar-brand" href="#">
-        <img src="../static/icon/도움닫기.png">
-      </a>
-      <a class="navbar-brand" href="/">
-        <img src="../static/icon/마이.png">
-      </a>
-        
-
-  </div>
- 
+  <nav class="navbar fixed-bottom bottom">
+    <div class="container-fluid">
       
+      <a class="navbar-brand mx-3" href="/test1">
+        <img src="../static/icon/기록1.png">
+        
+    </a>
+    <a class="navbar-brand" href="/community">
+      <img src="../static/icon/커뮤니티.png">
+
+    </a>
+    <a class="navbar-brand" href="#">
+      <img src="../static/icon/도움닫기.png">
+    </a>
+    <a class="navbar-brand" href="/" style="margin-right: 25px;">
+      <img src="../static/icon/마이.png">
+    </a>
+      
+    </div>
 
   </nav>
 

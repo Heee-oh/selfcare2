@@ -61,6 +61,7 @@ userinput.addEventListener('input', function() {
       // Add the related keywords to the autocomplete box
       relatedKeywords.forEach(keyword => {
         const keywordElement = document.createElement('div');
+        
         keywordElement.textContent = keyword;
         keywordElement.addEventListener('click', function() {
           // Check if the number of tags is less than 5
