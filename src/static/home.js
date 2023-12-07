@@ -202,7 +202,7 @@ for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate()
   let dateKey = `${nowYear}-${nowMonth}-${nowDayOfMonth}`;
 
   if(recordsByDate[dateKey]) {
-      newDIV.style.backgroundColor = "#F5D042";   // 배경색 변경
+      newDIV.style.backgroundColor = "#00A8BA";   // 배경색 변경
       newDIV.style.color = "#fff12";
       newDIV.style.fontWeight = "600";
       newDIV.style.cursor = "pointer";

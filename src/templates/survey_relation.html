@@ -8,12 +8,13 @@
     <link href="../static/css/survey.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar fixed-top bg-body-tertiary">
+  <nav class="navbar fixed-top" style = "background-color:#FFFFFF ;">
         <div class="container-fluid">
           <a class="navbar-brand mb-0 h1" href="#" id ="prev-btn" onClick='goToPreviousQuestion'>&lt; 뒤로</a>
           <a class="navbar-brand mb-0 h1" href="#" id="next-btn" onclick="saveScore()">다음 &gt;</a>
         </div>
       </nav>
+      <hr class="my-4" style="border: 14px solid black;">
     <div class = "container mt-5">
     <div class="p-3 mb-2 bg-subtle text-emphasis-dark ">
         <div class="circle">
@@ -32,10 +33,10 @@
         <div class="col-md-4">
             <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" class="btn-check" name="score" id="score0" autocomplete="off" value="1"  checked>
-                <label class="btn btn-secondary mb-2" for="score0">예</label>
+                <label class="btn mb-4" style="background-color: #00A8BA; color:aliceblue"for="score0">예</label>
               
                 <input type="radio" class="btn-check" name="score" id="score1" autocomplete="off" value="0"  checked>
-                <label class="btn btn-secondary mb-2" for="score1">아니오</label>
+                <label class="btn mb-4" style="background-color: #00A8BA; color:aliceblue" for="score1">아니오</label>
                 
               </div>
               </div>
@@ -44,7 +45,7 @@
     </div>
     <div class ="row-mt=3">
         <div class="col-md-4">
-    <button id="sendDataBtn" style="display: none;">제출</button>
+          <button id="sendDataBtn" class= "btn btn-primary btn-lg" type = 'button' style="display: none; background-color:#00A8BA; color:aliceblue">제출</button>
         </div>
     </div>
     <hr class ="my-4">
@@ -57,9 +58,9 @@
         <nav class="navbar fixed-bottom bottom">
           <div class="container-fluid">
             <a class="navbar-brand" href="/test">
-              <img src="../static/icon/record.png">
+              <img src="../static/icon/기록1.png">
           </a>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/community">
             <img src="../static/icon/커뮤니티.png">
       
           </a>

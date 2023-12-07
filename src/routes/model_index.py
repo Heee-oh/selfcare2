@@ -5,7 +5,7 @@ import jwt
 
 class RecordModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
         
     def insert_record(self, id, content, keywords, situationi, anonymous, image_data, content_happy):
         with self.db.cursor() as cursor:
@@ -175,7 +175,7 @@ class RecordModel:
 
 class CommentModel:
     def __init__(self):
-        self.db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
+        self.db = pymysql.connect(host='localhost', user='root', password='qhrwl123', db='test', charset='utf8')
 
     def add_comment(self, post_user_id, mr_id, content):
         with self.db.cursor() as cursor:
