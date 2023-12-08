@@ -196,6 +196,9 @@ questions = [
 @app.route('/survey')
 def survey():
     return render_template('survey.html')
+@app.route('/survey_menu')
+def survey_menu():
+    return render_template('survey_menu.html')
 
 questions_stress = [
     {"question_stress_id": 1, "question_text": "그 경험에 관한 악몽을 꾸거나, 생각하고 싶지 않은데도 그 경험이 떠오른 적이 있다."},

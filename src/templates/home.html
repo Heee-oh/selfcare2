@@ -52,11 +52,11 @@ td {
 
 .Calendar>tbody>tr>td>p {
     font-family: 'Montserrat', sans-serif;
-    height: 45px;
-    width: 45px;
-    border-radius: 45px;
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
     transition-duration: .2s;
-    line-height: 45px;
+    line-height: 30px;
     margin: 2.5px;
     display: block;
     text-align: center;
@@ -311,7 +311,13 @@ td {
 .card-text {
   font-size: 12pt;
 }
-
+.modal-body {
+  display: flex;
+  justify-content: center;
+}
+.modal-footer {
+  display: initial;
+}
 </style>
 </head>
 <body>
@@ -446,7 +452,7 @@ td {
       <a href='/survey_panic' class="btn btn-secondary btn-block">설문조사(공황장애)</a>
   </div>
 </div>
-
+<a href='/survey_menu' class="btn btn-secondary btn-block">설문조사메뉴</a>
 
 <div id="top10">오늘 많이 공감받은 기록
 
@@ -509,7 +515,7 @@ td {
       <img src="../static/icon/커뮤니티.png">
 
     </a>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/selfcare">
       <img src="../static/icon/도움닫기.png">
     </a>
     <a class="navbar-brand" href="/" style="margin-right: 25px;">

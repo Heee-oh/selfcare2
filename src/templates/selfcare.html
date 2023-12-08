@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='selfcare.css') }}">
+    <title>Document</title>
+    <style>
+    header {
+        padding-top: 75px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 75px;
+        padding: 1rem;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 1;
+    }
+    .scrollbar-x {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .scrollbar-x-content {
+        width: 1500px; 
+        height: 100%;
+        overflow-x: auto; /* 가로 스크롤 활성화 */
+        white-space: nowrap; /* 가로 스크롤을 가로로만 적용하도록 설정 */
+    }
+    footer {
+        position: absolute;
+        left: 0px;
+        bottom: 50px;
+        width: 100%;
+        height: 80px;
+    }
+    .completed {
+        text-decoration: line-through;
+        color: #888;
+    }
+    .product {
+        display: inline-block; /* 내부 요소들을 가로로 배치 */
+        white-space: normal; /* 각 요소 내의 텍스트 줄 바꿈 허용 */
+    }
+
+    .v601_584 {
+            width: 100%;
+            height: auto;
+        }
+    @media only screen and (max-width: 414px) {
+            header {
+                padding-top: 20px;
+                height: 30px;
+            }
+
+            footer {
+                bottom: 30px;
+                height: 40px;
+            }
+        }
+
+    .v601_589 {
+        list-style-type: none; /* 리스트 스타일 제거 */
+        padding: 0;
+        font-family: sans-serif;
+        color: black;
+        font-weight: bold; /* 내부 간격 제거 */
+    }
+
+    .v601_589 li {
+        margin-bottom: 5px; /* 각 리스트 아이템 사이 간격 조절 */
+        cursor: pointer; /* 마우스 오버 시 포인터 모양으로 변경 */
+    }
+
+    .v601_589 li:hover {
+        background-color: #fffafa; /* 마우스 오버 시 배경색 변경 */
+    }
+    .v639_1461 {
+        overflow: visible;
+    }
+
+    .v639_1461 .btn {
+        background-color: #fff5ee; /* 버튼 배경색 */
+        color: #080808; /* 버튼 글자색 */
+        border: 1px solid #fffafa; /* 버튼 테두리 색 */
+        border-radius: 5px; /* 버튼 둥근 모서리 처리 */
+        transition: background-color 0.3s ease; /* 마우스 오버 시 부드럽게 색 변화 */
+    }
+
+    .v639_1461 .btn:hover {
+        background-color: #fffafa; /* 마우스 오버 시 버튼 배경색 변경 */
+    }
+    </style>
+</head>
+<body>
+    
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="v601_584" style="overflow-y: auto; width: 410px; height: 950px; position: relative;">
+                <div class="v601_585" style="overflow-y: auto;"></div>
+                        <span class="v601_586">To do list</span>
+                        <div class="v601_587"></div>
+                        <div class="v601_588"></div>
+                        <div class="601_587">
+                            <div class="completion">    
+                                <ul class="v601_589">
+                                    {% for item in todolist %}
+                                        <li>
+                                            {{ item.todolist }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>    
+                        </div>                            
+                        <span class="v601_593" type="button" onclick="window.location.href='/map'">전문적인 도움이 필요하신가요?</span>
+                        <span class="v601_594">영상 추천</span>
+                        <span class="v601_610">마인드 케어 상품</span>
+                        <div class="video">
+                            <div class="v639_1461" style="overflow: visible;">
+                                {% for video_url in video_urls %}
+                                    <a href="{{ video_url.vid_url }}" target="_blank" class="btn btn-outline-info d-block mb-4">영상보기</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <span class="v601_620">오늘의 글귀</span>
+                        <div class="v601_621"></div>
+                        <div class="v601_633"></div>
+                        <span class="v639_1478">또 실패했는가? 괜찮다. 다시 실행하라. 
+            그리고 더 나은 실패를 하라.</span>
+                        <span class="v639_1479">사무엘  베케트</span>
+                        <div class="v601_627" style="overflow-x: auto; white-space: nowrap;" >
+                            <div class="product">    
+                                <span class="v639_1487">아로마 캔들</span>
+                                <div class="v601_631"></div>
+                                <span class="v639_1485">66일 자존감 대화법</span>
+                                <span class="v639_1486">색상 커스텀 걱정인형</span>
+                                <span class="v639_1488">스프링 제본 컬러링 북</span>
+                            </div>                                
+                        </div>
+                        <header>    
+                            <div class="v639_1401">
+                                <div class="v639_1402"></div>
+                                <div class="name"></div>
+                                <div class="v639_1404"></div>
+                                <span class="v639_1408">도움닫기</span>
+                                <div class="name"></div>
+                            </div>
+                        </header>                            
+                        <footer>    
+                            <div class="v639_1410">
+                                <div class="v639_1413" >
+                                    <div class="v639_1414">
+                                        <div class="name"></div>
+                                        <span class="v639_1416">기록</span>
+                                    </div>
+                                    <div class="v639_1417">
+                                        <div class="name"></div>
+                                        <span class="v639_1419">커뮤니티</span>
+                                    </div>
+                                    <div class="v639_1420">
+                                        <div class="name"></div>
+                                        <span class="v639_1422">도움닫기</span>
+                                    </div>
+                                    <div class="v639_1423">
+                                        <div class="name"></div>
+                                        <span class="v639_1425">마이</span>
+                                    </div>
+                                </div>
+                                <div class="name"></div>
+                            </div>
+                        </footer>                           
+                        <div class="v639_1492">
+                            <div class="v639_1493"></div>
+                            <div class="v639_1494"></div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/static/selfcare.js"></script>
+
+
+
+</body>
+</html>

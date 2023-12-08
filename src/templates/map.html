@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='map.css') }}">
+    
+    <title>Document</title>
+    <style>
+        .infowindow-container {
+            width: 250px;
+            padding: 15px;
+            font-family: 'Arial', sans-serif;
+            background-color: #fff0f5;
+            border: 1px ridge #fff0f5 ;
+            border-radius: 5px;
+            
+        }
+
+        .center-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .center-info {
+            font-size: 14px;
+        }
+        .tel {
+            font-family: serif;
+        }
+
+        .centered-div {
+            display: flex;
+            justify-content: center;
+        }
+        .close-center {
+            background-color: white;
+            border-radius: 10px ;
+            height: 200px;
+
+        }
+        .v639_1912{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="v639_1833">
+            <div class="v639_1834">
+                <div id="map" style="width:100%;height:350px;"></div>
+            </div>                
+            <div class="col-lg-6 mt-2"></div>
+            <div class="v639_1902">
+                <div id="mental" class="close-center" style="width: 100%; height: 600px; overflow-y: auto; padding: 0 20px;"></div>
+            </div>                
+            <span class="v639_1853" style="font-size: 18px; font-weight: bold;">현재 위치에서 가까운 전문 기관</span>
+            <div class="v639_1866">
+                <div class="v639_1867"></div>
+                <div class="name"></div>
+                <div class="v639_1869"></div>
+                <div class="name"></div>
+            </div>
+            <div class="v639_1872">
+                <div class="v639_1873"></div>
+                <div class="v639_1874"></div>
+                <div class="v639_1875">
+                    <div class="v639_1876">
+                        <div class="name"></div>
+                        <span class="v639_1878">기록</span>
+                    </div>
+                    <div class="v639_1879">
+                        <div class="name"></div>
+                        <span class="v639_1881">커뮤니티</span>
+                    </div>
+                    <div class="v639_1882">
+                        <div class="name"></div>
+                        <span class="v639_1884">도움닫기</span>
+                    </div>
+                    <div class="v639_1885">
+                        <div class="name"></div>
+                        <span class="v639_1887">마이</span>
+                    </div>
+                </div>
+                <div class="name"></div>
+            </div>
+            <div class="v639_1899">
+                <div class="v639_1900"></div>
+                <div class="v639_1901"></div>
+            </div>
+            <div class="v639_1910">
+                <div class="v639_1911">
+                    <span class="v639_1912" onclick="window.location.href='/selfcare'">뒤로</span>
+                </div>
+                <div class="name"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=33df6f0ba941bdb96c4c60d5ce4f07bb"></script>
+    <script src="/static/map.js"></script>
+    
+</body>
+</html>

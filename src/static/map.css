@@ -1,0 +1,383 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+  }
+  .v639_1833 {
+    width: 390px;
+    height: 843px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v639_1834 {
+    width: 400px;
+    height: 391px;
+    background: url("../images/v639_1834.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 112px;
+    left: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v639_1837 {
+    width: 208px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 569px;
+    left: 94px;
+    font-family: Noto Sans KR;
+    font-weight: Bold;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v639_1838 {
+    width: 208px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 644px;
+    left: 94px;
+    font-family: Noto Sans KR;
+    font-weight: Bold;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v639_1839 {
+    width: 208px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 596px;
+    left: 94px;
+    font-family: Noto Sans KR;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v639_1840 {
+    width: 208px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 671px;
+    left: 94px;
+    font-family: Noto Sans KR;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v639_1902 {
+    width: 350px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 566px;
+    left: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: auto;
+  }
+  .v639_1853 {
+    width: 250px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 523px;
+    left: 20px;
+    font-family: Noto Sans KR;
+    opacity: 1;
+    text-align: left;
+  }
+  .v639_1866 {
+    width: 390px;
+    height: 105px;
+    background: url("../images/v639_1866.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v639_1867 {
+    width: 390px;
+    height: 105px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1869 {
+    width: 350px;
+    height: 15px;
+    background: url("../images/v639_1869.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1872 {
+    width: 390px;
+    height: 94px;
+    background: url("../images/v639_1872.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 749px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v639_1873 {
+    width: 390px;
+    height: 94px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v639_1874 {
+    width: 134px;
+    height: 0px;
+    background: url("../images/v639_1874.png");
+    opacity: 1;
+    position: absolute;
+    top: 84px;
+    left: 130px;
+    border: 5px solid rgba(217,217,217,1);
+  }
+  .v639_1875 {
+    width: 320px;
+    height: 44px;
+    background: url("../images/v639_1875.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 18px;
+    left: 35px;
+    overflow: hidden;
+  }
+  .v639_1876 {
+    width: 28px;
+    height: 44px;
+    background: url("../images/v639_1876.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1878 {
+    width: 28px;
+    color: rgba(30,30,30,0.5);
+    position: absolute;
+    top: 27px;
+    left: 0px;
+    font-family: Noto Sans KR;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: center;
+  }
+  .v639_1879 {
+    width: 45px;
+    height: 44px;
+    background: url("../images/v639_1879.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 88px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1881 {
+    width: 45px;
+    color: rgba(30,30,30,0.5);
+    position: absolute;
+    top: 27px;
+    left: 0px;
+    font-family: Noto Sans KR;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: center;
+  }
+  .v639_1882 {
+    width: 45px;
+    height: 44px;
+    background: url("../images/v639_1882.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 187px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1884 {
+    width: 45px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 27px;
+    left: 0px;
+    font-family: Noto Sans KR;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: center;
+  }
+  .v639_1885 {
+    width: 28px;
+    height: 44px;
+    background: url("../images/v639_1885.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 292px;
+    overflow: hidden;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1887 {
+    width: 23px;
+    color: rgba(30,30,30,0.5);
+    position: absolute;
+    top: 27px;
+    left: 3px;
+    font-family: Noto Sans KR;
+    font-weight: Regular;
+    font-size: 12px;
+    opacity: 1;
+    text-align: center;
+  }
+  .name {
+    color: #fff;
+  }
+  .v639_1899 {
+    width: 20px;
+    height: 24px;
+    background: url("../images/v639_1899.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 57px;
+    left: 306px;
+    overflow: hidden;
+  }
+  .v639_1900 {
+    width: 20px;
+    height: 20px;
+    background: rgba(30,30,30,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .v639_1901 {
+    width: 5px;
+    height: 2px;
+    background: rgba(30,30,30,1);
+    opacity: 1;
+    position: absolute;
+    top: 21px;
+    left: 7px;
+  }
+  .v639_1910 {
+    width: 64px;
+    height: 24px;
+    background: url("../images/v639_1910.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 57px;
+    left: 20px;
+    overflow: hidden;
+  }
+  .v639_1911 {
+    width: 30px;
+    height: 23px;
+    background: url("../images/v639_1911.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 34px;
+    overflow: hidden;
+  }
+  .v639_1912 {
+    width: 30px;
+    color: rgba(30,30,30,1);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: Noto Sans KR;
+    font-weight: Medium;
+    font-size: 16px;
+    opacity: 1;
+    text-align: center;
+  }
+  .name {
+    color: #fff;
+  }
+  

@@ -32,6 +32,54 @@ def wbs():
     data_dict = data.to_dict('records')
     return render_template('wbs.html', data=data_dict)
 
+# MySQL 연결 설정
+conn = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='qhrwl123',
+    db='test',
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+
+)
+
+@index_bp.route('/selfcare')
+def selfcare():
+    try:
+        with conn.cursor() as cursor:
+            todolist_query = "SELECT todolist FROM selfcare ORDER BY RAND() LIMIT 4" # 데이터베이스에서 랜덤으로 4개의 항목을 가져오는 쿼리
+            
+            cursor.execute(todolist_query)
+            todolist_result = cursor.fetchall()
+
+            
+            if not todolist_result:
+                return "No data found in the database."  # 결과가 없는 경우에 대한 처리 
+
+            video_query = "SELECT vid_url FROM selfcare ORDER BY RAND() LIMIT 4" # 데이터베이스에서 랜덤으로 3개의 항목을 가져오는 쿼리
+           
+            cursor.execute(video_query)
+            video_result = cursor.fetchall()
+            
+            
+            if not video_result:
+                return "No data found in the database."  
+        
+        return render_template('selfcare.html', todolist=todolist_result, video_urls=video_result)
+        
+
+    except Exception as e:
+        print("에러:", repr(e))
+        print("에러 메시지:", str(e))
+        import traceback
+        print("트레이스백:")
+        traceback.print_exc()
+        return "데이터베이스에서 데이터를 가져오는 중 오류가 발생했습니다."
+    
+@index_bp.route('/map')
+def map():
+    return render_template('map.html')
+
 # @index_bp.route('/community')
 # def community():
 #     db = pymysql.connect(host='localhost', user='root', password='1234', db='test', charset='utf8')
