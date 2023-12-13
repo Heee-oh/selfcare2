@@ -142,14 +142,14 @@ class RecordModel:
         with self.db.cursor() as cursor:
             sql = """
             UPDATE mind_record
-            SET content = %s, situation = %s, keyword = %s, image = %s, happy = %s, open_close = %s, mind_time = %s
+            SET content = %s, situation = %s, keyword = %s, image = %s, happy = %s, open_close = %s
             WHERE mr_id = %s
             """
-            mind_time = datetime.now()
+            
             open_close = anonymous  # 기본값
             situation =  ', '.join(situationi)  # 기본값
             keywords_str = ', '.join(keywords)  # 문자 배열 합치기
-            cursor.execute(sql, (content, situation, keywords_str, image_data, content_happy, open_close, mind_time,mr_id))
+            cursor.execute(sql, (content, situation, keywords_str, image_data, content_happy, open_close, mr_id))
         self.db.commit()
     
         
@@ -161,6 +161,16 @@ class RecordModel:
             records = cursor.fetchall()
 
         return [RecordData(record) for record in records]
+    
+    def get_name(self, id):
+        with self.db.cursor(pymysql.cursors.DictCursor) as cursor:
+            sql = "SELECT nickname FROM users WHERE id = %s"
+            cursor.execute(sql, (id,))
+            result = cursor.fetchone()
+            if result:
+                return result['nickname']
+            else:
+                return None
 
     # def serialize(self):
     #     return {
@@ -210,12 +220,17 @@ class CommentModel:
     
         
     # id에 따른 사용자의 댓글 삭제 
-    def delete_comment(self, comment_id):
+    def delete_comment(self, comment_id, mr_id):
         try:
             with self.db.cursor() as cursor:
                 sql = "DELETE FROM comment_table WHERE comment_id = %s"
                 cursor.execute(sql, (comment_id,))
-            self.db.commit()
+                self.db.commit()
+    
+                sql = "UPDATE mind_record SET comment_count = comment_count - 1 WHERE mr_id = %s"
+                cursor.execute(sql,(mr_id,))
+                
+                self.db.commit()
 
             return True
         except:

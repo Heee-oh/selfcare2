@@ -97,12 +97,13 @@ def get_comments(mr_id):
     return jsonify(user_id=id, comments=[comment.serialize() for comment in comments])
 
 
-@community.route('/delete_comment/<int:comment_id>', methods=['DELETE'])
-def delete_comment(comment_id):
+@community.route('/delete_comment/<int:comment_id>/<int:mr_id>', methods=['DELETE'])
+def delete_comment(comment_id, mr_id):
     comment_data = CommentModel()
-    comment_data.delete_comment(comment_id)
+    comment_data.delete_comment(comment_id, mr_id)
 
     return jsonify(success=True, message="Comment deleted successfully"), 200
+
 
 
 @community.route('/get_like', methods=['POST'])

@@ -47,26 +47,21 @@ conn = pymysql.connect(
 def selfcare():
     try:
         with conn.cursor() as cursor:
-            todolist_query = "SELECT todolist FROM selfcare ORDER BY RAND() LIMIT 4" # 데이터베이스에서 랜덤으로 4개의 항목을 가져오는 쿼리
-            
+            todolist_query = "SELECT todolist FROM selfcare ORDER BY RAND() LIMIT 4"
             cursor.execute(todolist_query)
             todolist_result = cursor.fetchall()
 
-            
             if not todolist_result:
-                return "No data found in the database."  # 결과가 없는 경우에 대한 처리 
+                return "데이터베이스에서 데이터를 찾을 수 없습니다."
 
-            video_query = "SELECT vid_url FROM selfcare ORDER BY RAND() LIMIT 4" # 데이터베이스에서 랜덤으로 3개의 항목을 가져오는 쿼리
-           
+            video_query = "SELECT vid_url FROM selfcare ORDER BY RAND() LIMIT 4"
             cursor.execute(video_query)
             video_result = cursor.fetchall()
-            
-            
+
             if not video_result:
-                return "No data found in the database."  
-        
+                return "데이터베이스에서 데이터를 찾을 수 없습니다."
+
         return render_template('selfcare.html', todolist=todolist_result, video_urls=video_result)
-        
 
     except Exception as e:
         print("에러:", repr(e))

@@ -8,12 +8,12 @@
     <link href="../static/css/survey.css" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar fixed-top" style = "background-color:#FFFFFF ;">
-        <div class="container-fluid">
-          <a class="navbar-brand mb-0 h1" href="/test" id ="prev-btn" onclick = 'goToPreviousQuestion()'>&lt; 뒤로</a>
-          <a class="navbar-brand mb-0 h1" href="#" id="next-btn" onclick="saveScore()">다음 &gt;</a>
-        </div>
-      </nav>
+  <nav class="navbar fixed-top top" style = "background-color:#FFFFFF ;">
+    <div class="container-fluid">
+      <a class="navbar-brand mb-0 h1" href="#" id ="prev-btn" onclick = 'goToPreviousQuestion()'>&lt; 뒤로</a>
+      <a class="navbar-brand mb-0 h1" href="#" id="next-btn" onclick="saveScore()">다음 &gt;</a>
+    </div>
+  </nav>
       <hr class="my-4" style="border: 14px solid black;">
     <div class = "container mt-5">
     <div class="p-3 mb-2 bg-subtle text-emphasis-dark ">
@@ -33,47 +33,49 @@
         <div class="col-md-4">
             <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" class="btn-check" name="score" id="score0" autocomplete="off" value="0"  checked>
-                <label class="btn mb-4" style="background-color: #00A8BA; color:aliceblue" for="score0">아니다</label>
+                <label class="btn mb-4" style="background-color: #808080; color:aliceblue" for="score0">아니다</label>
               
                 <input type="radio" class="btn-check" name="score" id="score1" autocomplete="off" value="1"  checked>
-                <label class="btn mb-4" style="background-color: #00A8BA; color:aliceblue" for="score1">가끔 그렇다</label>
+                <label class="btn mb-4" style="background-color: #808080; color:aliceblue" for="score1">가끔 그렇다</label>
               
                 <input type="radio" class="btn-check" name="score" id="score2" autocomplete="off" value="2"  checked>
-                <label class="btn mb-4" style="background-color: #00A8BA; color:aliceblue" for="score2">자주 그렇다</label>
+                <label class="btn mb-4" style="background-color: #808080; color:aliceblue" for="score2">자주 그렇다</label>
               </div>
               </div>
         </div>
     </div>
-    <div class ="row-mt=3">
-        <div class="col-md-4">
-    <button id="sendDataBtn" class= "btn btn-primary btn-lg" type = 'button' style="display: none; background-color:#00A8BA; color:aliceblue">제출</button>
-        </div>
-    </div>
+    <div class="row mt-3 justify-content-center">
+      <div class="col-md-4 text-center">
+          <button id="sendDataBtn" class="btn btn-primary btn-lg" type="button" style="background-color:#00A8BA; color:aliceblue">결과확인하기</button>
+      </div>
+  </div>
     <hr class ="my-4">
     <div id ="result-container">
 
 </div>
-    <div class="container">
 
-  
-        <nav class="navbar fixed-bottom bottom">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/test">
-              <img src="../static/icon/기록1.png">
-          </a>
-          <a class="navbar-brand" href="/community">
-            <img src="../static/icon/커뮤니티.png">
-      
-          </a>
-          <a class="navbar-brand" href="/selfcare">
-            <img src="../static/icon/도움닫기.png">
-          </a>
-          <a class="navbar-brand" href="/">
-            <img src="../static/icon/마이.png">
-          </a>
-            
+
+<nav class="navbar fixed-bottom bottom">
+  <div class="container-fluid">
     
-      </div>
+    <a class="navbar-brand mx-3" href="/test1">
+      <img src="../static/icon/기록1.png">
+      
+  </a>
+  <a class="navbar-brand" href="/community">
+    <img src="../static/icon/커뮤니티.png">
+
+  </a>
+  <a class="navbar-brand" href="/selfcare">
+    <img src="../static/icon/no마음토닥.png">
+  </a>
+  <a class="navbar-brand" href="/" style="margin-right: 25px;">
+    <img src="../static/icon/마이.png">
+  </a>
+    
+  </div>
+
+</nav>
 
 
      <script src ="../static/survey.js"></script>

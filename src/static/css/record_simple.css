@@ -6,28 +6,15 @@
   }
 
   .top {
-  position: relative;
-  height: 80px; 
-  border-bottom: 1px solid #E7E7E7; 
+    position: relative;
+    height: 80px; 
+    border-bottom: 1px solid #E7E7E7; 
   }
   .top a {
     text-align: center;
   }
 
-  #tabpanel {
-    position: absolute;
-    bottom: 140px; /* Adjust as needed */
-    width: 100%; /* Ensure the tabpanel spans the full width */
-  }
-  
-  #autocomplete {
-    position: absolute;
-    bottom: 140px; /* Adjust as needed */
-    margin-top: 20px;
-    
-    width: 100%; /* Ensure the autocomplete spans the full width */
-    background-color: #EAEAEA;
-  }
+
   #autocomplete div {
   
     margin-left: 20px;
@@ -38,7 +25,9 @@
     height: 100px; 
 
   }
-  
+  .text-emphasis-dark{
+    height: 100%;
+  }
   .tag {
     display: inline-block;
     padding: 2px 8px;
@@ -101,32 +90,34 @@
     }
 
     .circle {         /*기록 보기 아이콘으로 대체될 예정 */
+      
   width: 50px;
   height: 50px;
   background-color: #c2acac;
   border-radius: 50%;
-  position: absolute;
-  top: calc(15% - 25px); /* Adjust as needed */
-  left: 10%;
+  position: relative;
+  top:10px;
+  left: 7%;
   transform: translateX(-50%);
 }
 
 .circle2 {         /*기록 보기 아이콘으로 대체될 예정 */
     width: 50px;
     height: 50px;
+    
     background-color: #c2acac;
     border-radius: 50%;
-    position: absolute;
-    top: calc(35% - 25px); /* Adjust as needed */
-    left: 10%;
+    position: relative;
+    top: 10px;
+    left: 7%;
     transform: translateX(-50%);
   }
 
 .question{
-    position: absolute;
+    position: relative;
     background-color: #f0f0f0;
     
-    top: calc(13% - 30px); /* Adjust as needed */
+    bottom: 70px;
     left: 15%;
     border-radius: 10px;
     padding: 10px;
@@ -134,11 +125,12 @@
     width: 220px;
   }
   .question2 {
-    position: absolute;
+    position: relative;
     background-color: #f0f0f0;
     
-    top: calc(35% - 50px); /* Adjust as needed */
+    right: 0;
     left: 15%;
+    bottom: 70px;
     border-radius: 10px;
     padding: 10px;
     margin: 20px;
@@ -147,22 +139,18 @@
 
 
   .myanswer{
-    position: absolute;
+    position: relative;
     background-color: #f0f0f0;
     
-    top: calc(17% - 27px); /* Adjust as needed */
+    
     border-radius: 10px;
     padding: 10px;
-    margin: 20px;
+    margin-right: 20px;
+    bottom: 50px;
     width: 280px;
   }
 
-  .myanswer {
-    margin-top: calc(25% - 25px); 
-    right: 0%;
-  }
-
-
+ 
   
 
   .question::before { /*말풍선 삼각형*/
@@ -204,10 +192,39 @@
     border-left: 20px solid #f0f0f0; 
   }
   .inputchat {
-  position: fixed;
-  left: 15px;
-  bottom: 90px; /* Adjust this value based on the height of your navbar */
-  width: 92%; /* Ensure the input chat spans the full width */
+    position: fixed;
+    height: 65px;
+    background-color: #afb2b5;
+    bottom: 90px; /* Adjust this value based on the height of your navbar */
+    width: 100%; /* Ensure the input chat spans the full width */
+    
+    }
+    #tabpanel {
+    position: absolute;
+    bottom: 160px; /* Adjust as needed */
+    width: 100%; /* Ensure the tabpanel spans the full width */
+  }
+  
+  #autocomplete {
+    position: absolute;
+    bottom: 160px; /* Adjust as needed */
+    margin-top: 20px;
+    
+    width: 100%; /* Ensure the autocomplete spans the full width */
+    background-color: #EAEAEA;
+  }
+      .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), 
+  .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, 
+  .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, 
+  .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+  
   
   }
-
+  
+  .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+      margin-left: calc(var(--bs-border-width) * -1);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+  }

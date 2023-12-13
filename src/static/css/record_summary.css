@@ -1,4 +1,4 @@
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
   *{
     font-family: 'Noto Sans KR', sans-serif !important;
@@ -13,6 +13,43 @@
   .top a {
     text-align: center;
   }
+
+
+  #autocomplete div {
+  
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .bottom {
+    height: 100px; 
+    border-top: 1px solid #E7E7E7; 
+
+  }
+  .text-emphasis-dark{
+    height: 100%;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 4px;
+    
+    background-color: transparent;
+    border: 1px solid #00A8BA; /* Adjust as needed */
+    border-radius: 50px; /* Adjust as needed */
+    font-size: 0.875em;
+    color: #495057;
+    
+    }
+
+    .tag:hover {
+    background-color: #00A8BA; /* Adjust as needed */
+    }
+
+    .keyword_list {
+      margin: 15px;
+    }
+
     .bg-gray {
       background-color: #f0f0f0;
     }
@@ -21,7 +58,17 @@
       background-color: #ffffff;
       padding: 20px;
     }
-
+    /* 
+    .image-box {
+      width: 100px; 
+      height: 100px; 
+      background-color: #cccccc; 
+      border: 1px solid #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto; 
+    } */
 
     .bottom-content {
 
@@ -39,28 +86,39 @@
     }
 
     .custom-div {
-    height: 250px; 
+    height: 250px; /* Adjust as needed */
   
     }
 
     .circle {         /*기록 보기 아이콘으로 대체될 예정 */
-  width: 50px;
-  height: 50px;
-  background-color: #c2acac;
-  border-radius: 50%;
-  position: absolute;
-  top: calc(15% - 25px); /* Adjust as needed */
-  left: 10%;
-  transform: translateX(-50%);
-}
-
-
+      
+      width: 50px;
+      height: 50px;
+      background-color: #c2acac;
+      border-radius: 50%;
+      position: relative;
+      top:10px;
+      left: 7%;
+      transform: translateX(-50%);
+    }
+    
+.circle2 {         /*기록 보기 아이콘으로 대체될 예정 */
+    width: 50px;
+    height: 50px;
+    
+    background-color: #c2acac;
+    border-radius: 50%;
+    position: relative;
+    top: 20px;
+    left: 7%;
+    transform: translateX(-50%);
+  }
 
 .question{
-    position: absolute;
+    position: relative;
     background-color: #f0f0f0;
     
-    top: calc(13% - 30px); /* Adjust as needed */
+    bottom: 70px;
     left: 15%;
     border-radius: 10px;
     padding: 10px;
@@ -68,11 +126,12 @@
     width: 220px;
   }
   .question2 {
-    position: absolute;
+    position: relative;
     background-color: #f0f0f0;
     
-    top: calc(23% - 50px); /* Adjust as needed */
+    right: 0;
     left: 15%;
+    bottom: 70px;
     border-radius: 10px;
     padding: 10px;
     margin: 20px;
@@ -80,36 +139,26 @@
   }
 
 
-  .question3 {
-    position: absolute;
+  .myanswer{
+    position: relative;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    top: calc(50% - 50px); /* Adjust as needed */
-    left: 15%;
+    
+    
     border-radius: 10px;
     padding: 10px;
-    margin: 20px;
-    width: 220px;
+    margin-right: 20px;
+    bottom: 50px;
+    width: 280px;
   }
 
-  .question4 {
-    position: absolute;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    top: calc(70% - 50px); /* Adjust as needed */
-    left: 15%;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 20px;
-    width: 220px;
-  }
+ 
   
 
   .question::before { /*말풍선 삼각형*/
     content: "";
     position: absolute;
     left: -17px; 
-    top: 50%;
+    top: 52%;
     transform: translateY(-70%);
     width: 0;
     height: 0;
@@ -144,13 +193,39 @@
     border-left: 20px solid #f0f0f0; 
   }
   .inputchat {
-  position: fixed;
-  left: 15px;
-  bottom: 90px; /* Adjust this value based on the height of your navbar */
-  width: 92%; /* Ensure the input chat spans the full width */
+    position: fixed;
+    height: 65px;
+    background-color: #afb2b5;
+    bottom: 90px; /* Adjust this value based on the height of your navbar */
+    width: 100%; /* Ensure the input chat spans the full width */
+    
+    }
+    #tabpanel {
+    position: absolute;
+    bottom: 160px; /* Adjust as needed */
+    width: 100%; /* Ensure the tabpanel spans the full width */
+  }
+  
+  #autocomplete {
+    position: absolute;
+    bottom: 160px; /* Adjust as needed */
+    margin-top: 20px;
+    
+    width: 100%; /* Ensure the autocomplete spans the full width */
+    background-color: #EAEAEA;
+  }
+      .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), 
+  .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, 
+  .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, 
+  .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+  
   
   }
-  .bottom {
-  height: 100px; 
   
-}
+  .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+      margin-left: calc(var(--bs-border-width) * -1);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+  }

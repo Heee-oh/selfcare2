@@ -97,11 +97,11 @@ async function fetchPosts() {
     });
 
         var ad = document.createElement('div');
-        ad.className = 'border feed_box ad';
+        ad.className = 'mx-auto border feed_box ad';
         ad.id = 'advertisement';
         //광고이미지 // var imageHTML = record.image ? `<img class="feed_img" src="../${record.image}">` : '';
         ad.innerHTML = `
-        <div class="ad feed_content">
+        <div class="feed_content">
             <h2>광고 자리</h2>
             <p>10게시물당 1개씩 나옵니다.</p>
         </div>

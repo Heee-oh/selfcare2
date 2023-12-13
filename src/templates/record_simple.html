@@ -27,7 +27,7 @@
   
   </nav>
 
-  <div class="p-3 mb-2 bg-subtle text-emphasis-dark ">
+  <!-- <div class="p-3 mb-2 bg-subtle text-emphasis-dark ">
     <div class="circle">
       <img src="../static/icon/캐릭터.png">
     </div>
@@ -48,7 +48,7 @@
 
 
 
-  <!-- 흰색 배경과 텍스트 -->
+  
   <div class="p-3 mb-2 bg-subtle text-emphasis-dark">
     <div class="circle2">
       <img src="../static/icon/캐릭터.png">
@@ -58,24 +58,59 @@
         감정이나 원인에 대해 더 자세히 알려줄 수 있어?
       </p>
     </div>
+  </div> -->
+
+
+  <div class="p-3 mb-2 mb-5 bg-subtle container-fluid ">
+    <div>
+      <div class="circle">
+        <img src="../static/icon/캐릭터.png">
+      </div>
+      <div class="container white-bg speech-bubble question">
+        <p style="font-size: 13px;">
+          그런 감정을 느꼈구나... 그 감정의 원인을 3개 이하로 알려줘.
+        </p>
+      </div>
+    </div>
+    
+
+    <div class="bg-subtle ">
+      <div class="container white-bg speech-bubble myanswer">
+        <p style="font-size: 13px;">
+            ...
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-subtle text-emphasis-dark">
+      <div class="circle2">
+        <img src="../static/icon/캐릭터.png">
+      </div>
+      <div class="container white-bg speech-bubble question2">
+        <p style="font-size: 13px;">
+          감정이나 원인에 대해 더 자세히 알려줄 수 있어?
+        </p>
+      </div>
+    </div>
+  
   </div>
-
-
-
 
 
 
   
   <div class="inputchat">
-    <input class="form-control" id="contentA" rows="1" placeholder="간단한 메모를 남겨보세요."></input>
-
+    <div class="input-group mb-3">
+      <input type="text" id="contentA" class="form-control mx-2 mt-2" placeholder="감정이나 원인에 대해서 기록해보세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn mt-1" type="button" id="button-addon2" onclick="goToNextPage()"> <img src="../static/icon/올리기.png">
+      </button>
+    </div>
   </div>
   
   <!-- 입력 창 -->
   <nav class="navbar fixed-bottom bottom">
     <div class="container-fluid">
       
-      <a class="navbar-brand mx-3" href="/test1">
+      <a class="navbar-brand mx-3" href="/test">
         <img src="../static/icon/기록1.png">
         
     </a>
@@ -84,7 +119,7 @@
 
     </a>
     <a class="navbar-brand" href="#">
-      <img src="../static/icon/도움닫기.png">
+      <img src="../static/icon/no마음토닥.png">
     </a>
     <a class="navbar-brand" href="/" style="margin-right: 25px;">
       <img src="../static/icon/마이.png">

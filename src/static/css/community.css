@@ -5,6 +5,9 @@
 
   } */
 
+  p {
+    font-family: 'Noto Sans KR', sans-serif !important;
+  }
 .main_body {
     display: flex;
     justify-content: center;
@@ -52,6 +55,7 @@
 
 
 .feed_txt{
+    font-family: 'Noto Sans KR', sans-serif !important;
     font-size: 14px;
 }
 
@@ -150,7 +154,7 @@
 
   .bottom {
   border-top: 1px solid #E7E7E7; 
-  height: 80px; 
+  height: 100px; 
   background-color: white;
   
 }
@@ -161,7 +165,8 @@
 }
 
 .tag_size {
-  font-size: 12px;
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-size: 12pt;
   color: #00A8BA;
 }
 #post {
@@ -170,6 +175,10 @@
   width: 100%;  
 }
 
+#applyKeyword {
+    background-color: #00A8BA;
+    color: white;
+}
 
 
 #autocomplete {
@@ -187,6 +196,10 @@ background-color: #EAEAEA;
     margin-bottom: 5px;
   }
 
+
+  .main_body {
+    border-radius: 20px;
+  }
 
 .tag {
   display: inline-block;

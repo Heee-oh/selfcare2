@@ -284,17 +284,27 @@ recordContainer.innerHTML = '기록이 없습니다.';
 
 }
 
-// 이전달 버튼 클릭
-function prevCalendar() {
-nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() - 1, nowMonth.getDate());   // 현재 달을 1 감소
-buildCalendar();    // 달력 다시 생성
-}
-// 다음달 버튼 클릭
-function nextCalendar() {
-nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, nowMonth.getDate());   // 현재 달을 1 증가
-buildCalendar();    // 달력 다시 생성
+
+let debounceTimer;
+
+function debounce(func, delay) {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(func, delay);
 }
 
+function prevCalendar() {
+  debounce(function() {
+    nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() - 1, nowMonth.getDate());   // 현재 달을 1 감소
+    buildCalendar();    // 달력 다시 생성
+  }, 700);
+}
+
+function nextCalendar() {
+  debounce(function() {
+    nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, nowMonth.getDate());   // 현재 달을 1 증가
+    buildCalendar();    // 달력 다시 생성
+  }, 700);
+}
 // input값이 한자리 숫자인 경우 앞에 '0' 붙혀주는 함수
 function leftPad(value) {
 if (value < 10) {
@@ -330,4 +340,9 @@ function record_move() {
   localStorage.removeItem('anonymous');
 
   window.location.href = '/test1';
+}
+
+
+function gosurvey() {
+  window.location.href='/survey_menu';
 }

@@ -1,7 +1,13 @@
-.top {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    font-family: 'Noto Sans KR', sans-serif !important;
+
+  } 
+
+.fixed-top {
     position: absolute;
     height: 50px; 
-    border-bottom: 1px solid #000; 
+    border-bottom: 1px solid #E7E7E7; 
   }
   .top a {
     text-align: center;
@@ -26,9 +32,6 @@
       margin: 0 auto; 
     } */
 
-    .bottom-content {
-
-    }
     .emotion-text {
       text-align: center;
       cursor: pointer;
@@ -107,7 +110,9 @@
     margin-top: calc(25% - 25px); 
     right: 0%;
   }
-
+.checked {
+  background-color: #80dae4;
+}
 
   
 
@@ -157,8 +162,8 @@
   
   }
   .bottom {
-  height: 80px; 
-  border-top: 1px solid #000; 
+  height: 100px; 
+  border-top: 1px solid #E7E7E7; 
 }
 hr.my-4 {
   border-top: 2px solid #000;
@@ -198,4 +203,8 @@ hr.my-4 {
   border: 10px solid #00A8BA;
   border-radius: 5px;
 
+}
+.selected {
+  background-color: #567375; 
+  color: white; 
 }

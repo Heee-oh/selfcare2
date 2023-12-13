@@ -327,7 +327,7 @@ td {
       <img src="../static/icon/홈로고.png" class="navbar-brand" onclick="window.location.reload()" style="width: 28px; height: auto;" ></a>
 
 
-      <div class="ms-auto"> 
+<!--      <div class="ms-auto"> 
         <a class="navbar-brand" href="#">
           <img src="../static/icon/알람.png">
         </a>
@@ -335,6 +335,7 @@ td {
           <img src="../static/icon/설정.png">
         </a>
       </div>
+    -->
 
     </div>
     
@@ -436,7 +437,7 @@ td {
 </div>
 
 {% endif %}
-
+<!--
 <div style="height:50px;"></div>
 <div class="row mx-1">
   <div class="col-sm-3 mb-2">
@@ -452,7 +453,15 @@ td {
       <a href='/survey_panic' class="btn btn-secondary btn-block">설문조사(공황장애)</a>
   </div>
 </div>
-<a href='/survey_menu' class="btn btn-secondary btn-block">설문조사메뉴</a>
+-->
+
+
+
+<!-- 이거 그대로 사용하면 크기 적당함 -->
+
+<img src="../static/icon/설문 이동.png" style="height: auto; width: 100%; padding-left: 5%; padding-right: 5%; margin-top: 20px;" onclick="gosurvey()">
+
+<!--<a href='/survey_menu' class="btn btn-secondary btn-block">설문조사메뉴</a> -->
 
 <div id="top10">오늘 많이 공감받은 기록
 
@@ -507,7 +516,7 @@ td {
   <nav class="navbar fixed-bottom bottom">
     <div class="container-fluid">
       
-      <a class="navbar-brand mx-3" href="/test1">
+      <a class="navbar-brand mx-3" href="/test">
         <img src="../static/icon/기록1.png">
         
     </a>
@@ -516,7 +525,7 @@ td {
 
     </a>
     <a class="navbar-brand" href="/selfcare">
-      <img src="../static/icon/도움닫기.png">
+      <img src="../static/icon/no마음토닥.png">
     </a>
     <a class="navbar-brand" href="/" style="margin-right: 25px;">
       <img src="../static/icon/마이.png">

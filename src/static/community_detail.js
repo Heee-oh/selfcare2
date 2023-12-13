@@ -52,21 +52,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.target.id === 'delete-comment') {
       e.preventDefault();
       let commentId = e.target.closest('.comment_box').id; 
-      delete_comment(commentId);
+      let mr_id = id;
+      delete_comment(commentId, mr_id);
 
     }
   });
 });
 
+
 // 삭제 요청 
-async function delete_comment(commentId) {
-  await fetch('/delete_comment/' + commentId, {
+async function delete_comment(commentId, mr_id) {
+  await fetch('/delete_comment/' + commentId + '/' + mr_id, {
           method: 'DELETE',
           
         })
         .then(response => response.json())
         .then(data => {
-        // Remove the post from the DOM
+        
           document.getElementById(commentId).remove();
           get_comment()
         });

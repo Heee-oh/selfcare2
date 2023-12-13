@@ -130,27 +130,7 @@
     border-bottom: 10px solid transparent; 
     border-left: 20px solid #f0f0f0; 
   }
-  .inputchat {
-  position: fixed;
-  left: 15px;
-  bottom: 90px; /* Adjust this value based on the height of your navbar */
-  width: 92%; /* Ensure the input chat spans the full width */
-  
-  }
-  #tabpanel {
-  position: absolute;
-  bottom: 140px; /* Adjust as needed */
-  width: 100%; /* Ensure the tabpanel spans the full width */
-}
 
-#autocomplete {
-  position: absolute;
-  bottom: 140px; /* Adjust as needed */
-  margin-top: 20px;
-  
-  width: 100%; /* Ensure the autocomplete spans the full width */
-  background-color: #EAEAEA;
-}
 
 #autocomplete div {
   
@@ -184,6 +164,44 @@
     .keyword_list {
       margin: 15px;
     }
+
+    .inputchat {
+  position: fixed;
+  height: 65px;
+  background-color: #afb2b5;
+  bottom: 90px; /* Adjust this value based on the height of your navbar */
+  width: 100%; /* Ensure the input chat spans the full width */
+  
+  }
+  #tabpanel {
+  position: absolute;
+  bottom: 160px; /* Adjust as needed */
+  width: 100%; /* Ensure the tabpanel spans the full width */
+}
+
+#autocomplete {
+  position: absolute;
+  bottom: 160px; /* Adjust as needed */
+  margin-top: 20px;
+  
+  width: 100%; /* Ensure the autocomplete spans the full width */
+  background-color: #EAEAEA;
+}
+    .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), 
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, 
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, 
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: calc(var(--bs-border-width) * -1);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
   </style>
 </head>
 <body>
@@ -220,9 +238,15 @@
     <div id="tabpanel"></div>
     <div id="autocomplete"></div>
   </div>
-  
+
+
+
   <div class="inputchat">
-    <input class="form-control" id="contentA" rows="1" placeholder="키워드를 입력해주세요."></input>
+    <div class="input-group mb-3">
+      <input type="text" id="contentA" class="form-control mx-2 mt-2" placeholder="'행복'을 입력해보세요!" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn mt-1" type="button" id="button-addon2" onclick="window.location.href='/test2'"> <img src="../static/icon/올리기.png">
+      </button>
+    </div>
   </div>
   
   <!-- 입력 창 -->
@@ -238,8 +262,8 @@
         <img src="../static/icon/커뮤니티.png">
   
       </a>
-      <a class="navbar-brand" href="#">
-        <img src="../static/icon/도움닫기.png">
+      <a class="navbar-brand" href="/selfcare">
+        <img src="../static/icon/no마음토닥.png">
       </a>
       <a class="navbar-brand" href="/" style="margin-right: 25px;">
         <img src="../static/icon/마이.png">

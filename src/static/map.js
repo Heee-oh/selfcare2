@@ -40,23 +40,26 @@ async function getData() {
         console.error('Error fetching data:', error);
     }
 }
+const uniqueCenters = new Set(); // 중복을 방지하기 위한 Set 객체 생성
 function handleXmlData(xmlDoc) {
-    
     const rows = xmlDoc.querySelectorAll('row');
-    
-    
-    const filteredData = Array.from(rows).filter(row => {
-        const sigunName = row.querySelector('SIGUN_NM').textContent;
-        return sigunName === '안성시';
-    });
+
+ 
 
     const dataDiv = document.getElementById("mental");
-    filteredData.forEach(row => {
+
+    Array.from(rows).forEach(row => {
         const centerName = row.querySelector('CENTER_NM').textContent;
+        
+        // 중복된 센터명이 이미 처리되었다면 건너뛰기
+        if (uniqueCenters.has(centerName)) {
+            console.log(`중복된 센터명 발견: ${centerName}`);
+            return;
+        }
+
+
         const reprsntTel = row.querySelector('TELNO').textContent;
         const roadaddress = row.querySelector('REFINE_ROADNM_ADDR').textContent;
-        const lat = row.querySelector('REFINE_WGS84_LAT').textContent;
-        const lng = row.querySelector('REFINE_WGS84_LOGT').textContent;
         console.log(`센터명: ${centerName}, 전화번호: ${reprsntTel}, 도로명 주소: ${roadaddress}`);
 
         const div = document.createElement("div");
@@ -64,18 +67,20 @@ function handleXmlData(xmlDoc) {
         div.innerHTML = `<p><strong class="center-name">[센터명]: ${centerName}</strong><br><span class="tel">☎)전화번호: ${reprsntTel}</span><br>도로명 주소: ${roadaddress}</p>`;
 
         dataDiv.appendChild(div);
-        var imageSrc = "/static/marker.png",
+
+        // Set에 센터명 추가하여 중복 방지
+        uniqueCenters.add(centerName);
+
+        var imageSrc = "./static/icon/marker.png",
             imageSize = new daum.maps.Size(27, 40),
             imageOption = {offset: new daum.maps.Point(14, 28)};
 
-        var latitude = lat;
-        var longitude = lng;
-        var centername = centerName;
+        var latitude = row.querySelector('REFINE_WGS84_LAT').textContent;
+        var longitude = row.querySelector('REFINE_WGS84_LOGT').textContent;
         var telno = reprsntTel;
         var address = roadaddress;
 
-        addMarker(imageSrc, imageSize, imageOption, latitude, longitude, centername, telno, address);
-        
+        addMarker(imageSrc, imageSize, imageOption, latitude, longitude, centerName, telno, address);
     });
 }
 getData();
@@ -210,3 +215,14 @@ function degreesToRadians(degrees){
     return radians;
 }
 
+//뭐 를 해 결 할 라 고 했 나 요 오 ~
+// 키워드 입력에서 uncatch 제 컴퓨터에서 개인 서버 뛰어서 일단 해결방안 찾았습니다. 
+// call
+// 뭔 소 리 지 ~
+// 개 인 컴 퓨 터 랑 저 기 랑 다 르 다?
+
+// 서버 컴퓨터의 자료를 깃에 올리고 제 개인 컴퓨터에 같은 환경으로 서버 띄어서 에러 잡고 여기다가 해결하는 방식으로 하고있습니다. 
+// 개 컴퓨터에서 오류 잡고 그 코드를 여기다가 옮기려 합니다. 
+// OK
+// 하 던 것 하 구 , 잠 깐 모 니 터 링 할 께 유 쏘 뤼 
+// 넵 알겠습니다. 

@@ -19,3 +19,6 @@ if(localStorage.getItem('mr_id_u')) {
     window.location.href = '/test6';
   });
 }
+
+
+document.getElementById('nickname').innerText = localStorage.getItem('name') + '의 오늘은 이렇게 정리할 수 있겠다.';

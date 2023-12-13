@@ -37,7 +37,7 @@ const onKakao = async () => {
 		
 		if(getCookie('logined') === 'true') {
 			// window.location.reload();
-			window.location.href='/demo';
+			window.location.href='/test';
 		} else {
 			document.querySelector("#loading").classList.add('display_none');
 		}
@@ -59,7 +59,12 @@ const autoLogin = async () => {
 		headers: { "Content-Type": "application/json" },
 		method: "GET"
 	})
-	.then(res => res.json());
+	.then(res => {
+		if (!res.ok) {
+			return { msg: `로그인하면 됩니다` };
+		  }
+		  return res.json();
+		});
 	try {
 		if (!!data['msg']) {
 			if (data['msg'] === `Missing cookie "access_token_cookie"`) {
@@ -77,7 +82,7 @@ const autoLogin = async () => {
 
 			nickname.textContent = `${data.nickname}`;
 			thumnail.src = data.profile;
-
+			document.getElementById('nav_display').classList.remove('display_none');
 			document.querySelector('#kakao').classList.add('display_none');
 			document.querySelector('#logout').classList.remove('display_none');
 			nickname.classList.remove('display_none');
@@ -107,6 +112,7 @@ const refreshToken = async () => {
 			document.querySelector('#logout').classList.add('display_none');
 			document.querySelector("#nickname").classList.add('display_none');
 			document.querySelector("#thumnail").classList.add('display_none');
+			document.getElementById('nav_display').classList.add('display_none');
 	
 			onKakao();
 			return;
@@ -122,6 +128,7 @@ const refreshToken = async () => {
 		document.querySelector('#logout').classList.add('display_none');
 		document.querySelector("#nickname").classList.add('display_none');
 		document.querySelector("#thumnail").classList.add('display_none');
+		document.getElementById('nav_display').classList.add('display_none');
 	}
 }
 

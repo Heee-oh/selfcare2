@@ -16,9 +16,18 @@
       </nav>
       <hr class="my-4" style="border: 14px solid black;">
       <a href="{{ url_for('survey') }}">
-      <img src = "../static/icon/공황장애.png " class = "img-fluid">
+        <img src="../static/icon/번아웃검사.png" style="height: auto; width: 100%; padding-left: 5%; padding-right: 5%; margin-top: 20px;">
       </a>
-    <div class="container">
+      <a href ="{{ url_for('survey_relation')}}">
+      <img src="../static/icon/관계중독검사.png" style="height: auto; width: 100%; padding-left: 5%; padding-right: 5%; margin-top: 20px;">
+      </a>
+      <a href="{{ url_for('survey_panic') }}">
+        <img src="../static/icon/공황장애검사.png" style="height: auto; width: 100%; padding-left: 5%; padding-right: 5%; margin-top: 20px;">
+      </a>
+      <a href ="{{ url_for('survey_stress')}}">
+      <img src="../static/icon/외상 후 스트레스장애.png" style="height: auto; width: 100%; padding-left: 5%; padding-right: 5%; margin-top: 20px;">
+      </a>
+      <div class="container">
 
   
         <nav class="navbar fixed-bottom bottom">
@@ -31,7 +40,7 @@
       
           </a>
           <a class="navbar-brand" href="/selfcare">
-            <img src="../static/icon/도움닫기.png">
+            <img src="../static/icon/no마음토닥.png">
           </a>
           <a class="navbar-brand" href="/">
             <img src="../static/icon/마이.png">

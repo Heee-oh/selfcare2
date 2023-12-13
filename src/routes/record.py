@@ -32,6 +32,18 @@ def test():
 
     return render_template('home.html', record=record, like_records=like_records)
 
+
+@record.route('/get_name')
+@jwt_required
+def get_name():
+    user_id = get_jwt_identity()
+    record_data = RecordModel()
+    user = record_data.get_name(user_id)
+
+    return jsonify(user=user)
+
+
+
 @record.route('/test1')
 # @jwt_required
 def test1():
