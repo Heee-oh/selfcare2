@@ -46,7 +46,12 @@ conn = pymysql.connect(
 @index_bp.route('/selfcare')
 def selfcare():
     try:
+        # 데이터베이스 연결 상태 확인 및 재연결 시도
+        if not conn.open:
+            conn.ping(reconnect=True)
+
         with conn.cursor() as cursor:
+            # 할 일 목록 조회
             todolist_query = "SELECT todolist FROM selfcare ORDER BY RAND() LIMIT 4"
             cursor.execute(todolist_query)
             todolist_result = cursor.fetchall()
@@ -54,6 +59,7 @@ def selfcare():
             if not todolist_result:
                 return "데이터베이스에서 데이터를 찾을 수 없습니다."
 
+            # 동영상 URL 조회
             video_query = "SELECT vid_url FROM selfcare ORDER BY RAND() LIMIT 4"
             cursor.execute(video_query)
             video_result = cursor.fetchall()
@@ -61,11 +67,12 @@ def selfcare():
             if not video_result:
                 return "데이터베이스에서 데이터를 찾을 수 없습니다."
 
+        # HTML 템플릿에 결과 전달
         return render_template('selfcare.html', todolist=todolist_result, video_urls=video_result)
 
-    except Exception as e:
-        print("에러:", repr(e))
-        print("에러 메시지:", str(e))
+    except pymysql.Error as e:
+        print(f"에러: {repr(e)}")
+        print(f"에러 메시지: {str(e)}")
         import traceback
         print("트레이스백:")
         traceback.print_exc()
