@@ -1,3 +1,7 @@
+# 원작자
+[iml1111](https://github.com/iml1111/python-oauth-kakao)
+
+
 # python-Oauth-kakao
 Python을 이용한 Kakao Oauth 연동 로그인 예제입니다.
 
