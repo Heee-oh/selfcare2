@@ -1,5 +1,10 @@
 # 원작자
+카카오 로그인 오픈소스를 가져와서 사용
 [iml1111](https://github.com/iml1111/python-oauth-kakao)
+
+# 필요사항
+1. NGINX로 서버 구축
+2. flask로 WAS 서버 구축
 
 
 # python-Oauth-kakao
